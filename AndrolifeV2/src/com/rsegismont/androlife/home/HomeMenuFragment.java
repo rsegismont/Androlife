@@ -22,9 +22,13 @@ import com.rsegismont.androlife.home.MenuAdapter.DataHolder;
 import com.rsegismont.androlife.noqr.NoqrCaptureActivity;
 import com.rsegismont.androlife.programlist.ProgramListActivity;
 
-public class HomeMenuFragment extends AndrolifeFragment implements OnItemClickListener {
-	public static final int AUTRES = 1;
-	public static final int PROGRAMMES = 0;
+public class HomeMenuFragment extends AndrolifeFragment implements
+		OnItemClickListener {
+
+	private static final int TYPE_DEFAULT = -1;
+	public static final int TYPE_AUTRES = 1;
+	public static final int TYPE_PROGRAMMES = 0;
+	
 	public static final String TYPE = "type";
 	private List<MenuAdapter.DataHolder> texts;
 	private MenuAdapter mAdapter;
@@ -42,11 +46,13 @@ public class HomeMenuFragment extends AndrolifeFragment implements OnItemClickLi
 	}
 
 	public void addOthers() {
-		/**MenuAdapter.DataHolder localDataHolder1 = new MenuAdapter.DataHolder();
-		if (getActivity().getPackageManager().hasSystemFeature("android.hardware.camera")) {
-			localDataHolder1.text = R.string.home_menu_qr;
-			this.texts.add(localDataHolder1);
-		}*/
+		/**
+		 * MenuAdapter.DataHolder localDataHolder1 = new
+		 * MenuAdapter.DataHolder(); if
+		 * (getActivity().getPackageManager().hasSystemFeature
+		 * ("android.hardware.camera")) { localDataHolder1.text =
+		 * R.string.home_menu_qr; this.texts.add(localDataHolder1); }
+		 */
 		MenuAdapter.DataHolder localDataHolder2 = new MenuAdapter.DataHolder();
 		localDataHolder2.text = R.string.home_menu_apropos;
 		this.texts.add(localDataHolder2);
@@ -57,20 +63,20 @@ public class HomeMenuFragment extends AndrolifeFragment implements OnItemClickLi
 		super.onAttach(activity);
 		texts = new LinkedList<DataHolder>();
 
-		int mType = 2;
+		int mType = TYPE_DEFAULT;
 		try {
-			mType = getArguments().getInt(TYPE, 2);
+			mType = getArguments().getInt(TYPE, TYPE_DEFAULT);
 		} catch (Throwable e) {
 
 		}
 
 		switch (mType) {
-		case PROGRAMMES:
+		case TYPE_PROGRAMMES:
 
 			addGuide();
 			break;
 
-		case AUTRES:
+		case TYPE_AUTRES:
 
 			addOthers();
 
@@ -84,9 +90,11 @@ public class HomeMenuFragment extends AndrolifeFragment implements OnItemClickLi
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		final ListView listview = new ListView(getActivity());
-		mAdapter = new MenuAdapter(getActivity(), R.layout.home_activities_list_item, this.texts);
+		mAdapter = new MenuAdapter(getActivity(),
+				R.layout.home_activities_list_item, this.texts);
 		listview.setAdapter(mAdapter);
 		listview.setOnItemClickListener(this);
 		listview.setBackgroundColor(Color.TRANSPARENT);
