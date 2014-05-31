@@ -1,3 +1,26 @@
+/* The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Romain Segismont
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ */
+
 package com.rsegismont.androlife.home;
 
 import java.util.Calendar;
@@ -29,7 +52,8 @@ import com.rsegismont.androlife.core.download.DownloadXmlNolifeTask;
 import com.rsegismont.androlife.core.ui.SwipeActivity;
 import com.rsegismont.androlife.utils.AndrolifeUtils;
 
-public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class HomeActivity extends SwipeActivity implements
+		LoaderManager.LoaderCallbacks<Cursor> {
 	private static final String PREFIX_TAG_PROGRAMMES = "prefix_programmes";
 	private static final String FAKE_TAG = "FAKE_TAG";
 	private static String[] columnsSelected;
@@ -76,11 +100,13 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 		}
 
 		for (int i = Math.max(0, this.currentPosition);; i++) {
-			if ((i >= this.mCursor.getCount()) || (!this.mCursor.moveToPosition(i))) {
+			if ((i >= this.mCursor.getCount())
+					|| (!this.mCursor.moveToPosition(i))) {
 				break;
 			}
-			long l = this.mCursor.getLong(this.mCursor
-					.getColumnIndex(SharedInformation.DatabaseColumn.DATE_UTC.stringValue));
+			long l = this.mCursor
+					.getLong(this.mCursor
+							.getColumnIndex(SharedInformation.DatabaseColumn.DATE_UTC.stringValue));
 			if (System.currentTimeMillis() - l < 0L) {
 				this.currentPosition = (i - 1);
 				break;
@@ -97,16 +123,19 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 		mHandler.removeCallbacks(mUpdate);
 		if (mCursor.moveToPosition(this.currentPosition)) {
 			if (mCursor.moveToNext() == true) {
-				long l = this.mCursor.getLong(mCursor
-						.getColumnIndex(SharedInformation.DatabaseColumn.DATE_UTC.stringValue));
+				long l = this.mCursor
+						.getLong(mCursor
+								.getColumnIndex(SharedInformation.DatabaseColumn.DATE_UTC.stringValue));
 				mHandler.postDelayed(mUpdate, l - System.currentTimeMillis());
 			}
 		}
 	}
 
 	private void initMenuFragment() {
-		FragmentTransaction menuFragmentTransaction = getSupportFragmentManager().beginTransaction();
-		menuFragmentTransaction.replace(R.id.left_drawer, new HomeMenuFragment());
+		FragmentTransaction menuFragmentTransaction = getSupportFragmentManager()
+				.beginTransaction();
+		menuFragmentTransaction.replace(R.id.left_drawer,
+				new HomeMenuFragment());
 		menuFragmentTransaction.commit();
 	}
 
@@ -122,7 +151,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 			getSupportActionBar().setHomeButtonEnabled(true);
 		}
 
-		if ((orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) || (!isTablet)) {
+		if ((orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+				|| (!isTablet)) {
 			getSupportActionBar().setSubtitle(R.string.home_menu_closed);
 			leftDrawer = findViewById(R.id.left_drawer);
 
@@ -133,8 +163,11 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 			}
 
 			this.mDrawerLayout = ((DrawerLayout) findViewById(R.id.drawer_layout));
-			this.mDrawerLayout.setDrawerShadow(getResources().getDrawable(R.drawable.drawer_shadow), Gravity.LEFT);
-			this.mDrawerToggle = new ActionBarDrawerToggle(this, this.mDrawerLayout, R.drawable.ic_drawer,
+			this.mDrawerLayout.setDrawerShadow(
+					getResources().getDrawable(R.drawable.drawer_shadow),
+					Gravity.LEFT);
+			this.mDrawerToggle = new ActionBarDrawerToggle(this,
+					this.mDrawerLayout, R.drawable.ic_drawer,
 					R.string.home_menu_open, R.string.home_menu_closed);
 			this.mDrawerLayout.setDrawerListener(new DrawerListener() {
 
@@ -149,10 +182,12 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 				public void onDrawerSlide(View arg0, float arg1) {
 					if ((arg1 >= 0.5f) && (this.progressState == 0)) {
 						this.progressState = 1;
-						getSupportActionBar().setSubtitle(R.string.home_menu_open);
+						getSupportActionBar().setSubtitle(
+								R.string.home_menu_open);
 					} else if ((arg1 < 0.5f) && (this.progressState == 1)) {
 						this.progressState = 0;
-						getSupportActionBar().setSubtitle(R.string.home_menu_closed);
+						getSupportActionBar().setSubtitle(
+								R.string.home_menu_closed);
 					}
 				}
 
@@ -169,15 +204,19 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 
 		}
 
-		mHorizontalMargin = getResources().getDimensionPixelSize(R.dimen.common_margin_horizontal);
-		mVerticalMargin = getResources().getDimensionPixelSize(R.dimen.common_margin_vertical);
+		mHorizontalMargin = getResources().getDimensionPixelSize(
+				R.dimen.common_margin_horizontal);
+		mVerticalMargin = getResources().getDimensionPixelSize(
+				R.dimen.common_margin_vertical);
 
 		initMenuFragment();
 
 		if ((LinearLayout) findViewById(R.id.main_frag_list) != null) {
 			homeGridFragment = new HomeProgrammesGridFragment();
-			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-			transaction.replace(R.id.main_frag_list, homeGridFragment, PREFIX_TAG_PROGRAMMES);
+			FragmentTransaction transaction = getSupportFragmentManager()
+					.beginTransaction();
+			transaction.replace(R.id.main_frag_list, homeGridFragment,
+					PREFIX_TAG_PROGRAMMES);
 			transaction.commit();
 
 			if (homeGridFragmentAdapter != null) {
@@ -193,12 +232,14 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 			setCurrentPosition(initialUpdate);
 
 			if (homeGridFragment.adapter == null) {
-				homeGridFragmentAdapter = new HomeProgrammesAdapter(this, this.mCursor, R.layout.home_programs_item,
+				homeGridFragmentAdapter = new HomeProgrammesAdapter(this,
+						this.mCursor, R.layout.home_programs_item,
 						this.currentPosition);
 				homeGridFragment.setAdapter(homeGridFragmentAdapter);
 
 			} else {
-				homeGridFragment.adapter.changeCursor(this.mCursor, this.currentPosition);
+				homeGridFragment.adapter.changeCursor(this.mCursor,
+						this.currentPosition);
 				homeGridFragment.adapter.notifyDataSetChanged();
 			}
 
@@ -207,7 +248,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 	}
 
 	public void displayDialogFragment(int title, int ok, int cancel) {
-		HomeAlertDialogFragment.newInstance(this, title, ok, cancel).show(getSupportFragmentManager(), "dialog");
+		HomeAlertDialogFragment.newInstance(this, title, ok, cancel).show(
+				getSupportFragmentManager(), "dialog");
 	}
 
 	public void download() {
@@ -227,12 +269,15 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 	}
 
 	public void onBackPressed() {
-		if ((SdkUtils.isXLargeTablet(getApplicationContext())) || (SdkUtils.isTabletLandscape(getApplicationContext()))) {
-			displayDialogFragment(R.string.alert_dialog_exit_title, R.string.alert_dialog_exit,
+		if ((SdkUtils.isXLargeTablet(getApplicationContext()))
+				|| (SdkUtils.isTabletLandscape(getApplicationContext()))) {
+			displayDialogFragment(R.string.alert_dialog_exit_title,
+					R.string.alert_dialog_exit,
 					R.string.alert_dialog_exit_cancel);
 		} else {
 			if (!this.mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
-				displayDialogFragment(R.string.alert_dialog_exit_title, R.string.alert_dialog_exit,
+				displayDialogFragment(R.string.alert_dialog_exit_title,
+						R.string.alert_dialog_exit,
 						R.string.alert_dialog_exit_cancel);
 			} else {
 				this.mDrawerLayout.closeDrawers();
@@ -250,16 +295,20 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 		super.onCreate(savedInstance);
 		try {
 			if (savedInstance == null) {
-				final PackageInfo corePackageInfo = getPackageManager().getPackageInfo(AndrolifeUtils.androlifeCore, 0);
+				final PackageInfo corePackageInfo = getPackageManager()
+						.getPackageInfo(AndrolifeUtils.androlifeCore, 0);
 				if (corePackageInfo.versionCode < SharedInformation.DATABASE_HD_VERSION) {
-					displayDialogFragment(R.string.alert_dialog_hd_title, R.string.alert_dialog_hd_ok,
+					displayDialogFragment(R.string.alert_dialog_hd_title,
+							R.string.alert_dialog_hd_ok,
 							R.string.alert_dialog_exit);
 				}
 
 				isUpdateNeeded();
 				/**
-				 * if (corePackageInfo.versionCode < SharedInformation.DATABASE_HD_VERSION) {
-				 * displayDialogFragment(R.string.alert_dialog_market_title, R.string.alert_dialog_market_ok,
+				 * if (corePackageInfo.versionCode <
+				 * SharedInformation.DATABASE_HD_VERSION) {
+				 * displayDialogFragment(R.string.alert_dialog_market_title,
+				 * R.string.alert_dialog_market_ok,
 				 * R.string.alert_dialog_market_cancel); } else {
 				 * 
 				 * }
@@ -273,7 +322,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 
 			error.printStackTrace();
 			try {
-				displayDialogFragment(R.string.alert_dialog_market_title, R.string.alert_dialog_market_ok,
+				displayDialogFragment(R.string.alert_dialog_market_title,
+						R.string.alert_dialog_market_ok,
 						R.string.alert_dialog_exit);
 			} catch (Throwable error2) {
 				error.printStackTrace();
@@ -284,7 +334,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 	}
 
 	public Loader<Cursor> onCreateLoader(int paramInt, Bundle paramBundle) {
-		return AndrolifeUtils.getAndrolifeLoader(getApplicationContext(), 0, columnsSelected, new Calendar[0]);
+		return AndrolifeUtils.getAndrolifeLoader(getApplicationContext(), 0,
+				columnsSelected, new Calendar[0]);
 	}
 
 	@Override
@@ -296,7 +347,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 
 	private void onLoadFinishedInternal() {
 		if (homeGridFragment != null) {
-			if ((this.mCursor != null) && (!this.mCursor.isClosed()) && (this.mCursor.getCount() > 0)) {
+			if ((this.mCursor != null) && (!this.mCursor.isClosed())
+					&& (this.mCursor.getCount() > 0)) {
 				setupTimer();
 				updateFragmentProgrammes(true);
 
@@ -340,7 +392,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 
 	}
 
-	private static class UpdateTaskNeeded extends AsyncTask<Void, Void, Boolean> {
+	private static class UpdateTaskNeeded extends
+			AsyncTask<Void, Void, Boolean> {
 
 		private HomeActivity activity;
 
@@ -350,13 +403,18 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 
 		@Override
 		protected Boolean doInBackground(Void... params) {
-			final ContentResolver localContentResolver = activity.getContentResolver();
+			final ContentResolver localContentResolver = activity
+					.getContentResolver();
 			final Uri uri = SharedInformation.CONTENT_URI_PROGRAMMES;
-			final String dateUTC = SharedInformation.DatabaseColumn.DATE_UTC.stringValue + ">=?";
-			final String[] arrayOfString = new String[] { "" + System.currentTimeMillis() };
+			final String dateUTC = SharedInformation.DatabaseColumn.DATE_UTC.stringValue
+					+ ">=?";
+			final String[] arrayOfString = new String[] { ""
+					+ System.currentTimeMillis() };
 
-			final Cursor cursor = localContentResolver.query(uri, null, dateUTC, arrayOfString,
-					SharedInformation.DatabaseColumn.DATE_UTC.stringValue + " ASC");
+			final Cursor cursor = localContentResolver.query(uri, null,
+					dateUTC, arrayOfString,
+					SharedInformation.DatabaseColumn.DATE_UTC.stringValue
+							+ " ASC");
 
 			if (cursor.getCount() == 0) {
 				cursor.close();

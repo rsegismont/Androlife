@@ -1,3 +1,26 @@
+/* The MIT License (MIT)
+ *
+ * Copyright (c) 2014 Romain Segismont
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ * 
+ */
+
 package com.rsegismont.androlife.home;
 
 import java.util.List;
@@ -49,13 +72,15 @@ public class MenuAdapter extends BaseAdapter {
 		if (paramView == null) {
 			paramView = this.mInflater.inflate(this.mLayout, null);
 			localViewHolder = new ViewHolder();
-			localViewHolder.title = ((TextView) paramView.findViewById(R.id.menu_itemTitle));
+			localViewHolder.title = ((TextView) paramView
+					.findViewById(R.id.menu_itemTitle));
 			SdkUtils.setTextViewRoboto(localViewHolder.title, "Roboto-Light");
 			paramView.setTag(localViewHolder);
 		} else {
 			localViewHolder = (ViewHolder) paramView.getTag();
 		}
-		localViewHolder.title.setText(((DataHolder) this.items.get(paramInt)).text);
+		localViewHolder.title
+				.setText(((DataHolder) this.items.get(paramInt)).text);
 		return paramView;
 
 	}
