@@ -32,14 +32,14 @@ public class DetailsContentAdapter extends BaseAdapter {
 		this.contentList = new SparseArray<String>();
 		this.count = 0;
 
-		addToAdapter("Détails", paramContentValues.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
+		addToAdapter("DŽtails", paramContentValues.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
 		String str;
 		if (paramDate != null) {
 			str = paramActivity.detailsHeaderDateFormat.format(paramDate);
 			if (paramBoolean) {
 				addToAdapter("Nolife Online", "Disponible depuis le " + str);
 			} else {
-				addToAdapter("Nolife Online", "Sera disponible à partir du " + str);
+				addToAdapter("Nolife Online", "Sera disponible ˆ partir du " + str);
 			}
 		}
 
