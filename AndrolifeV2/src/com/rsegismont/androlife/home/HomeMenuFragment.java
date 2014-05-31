@@ -42,11 +42,11 @@ public class HomeMenuFragment extends AndrolifeFragment implements OnItemClickLi
 	}
 
 	public void addOthers() {
-		MenuAdapter.DataHolder localDataHolder1 = new MenuAdapter.DataHolder();
+		/**MenuAdapter.DataHolder localDataHolder1 = new MenuAdapter.DataHolder();
 		if (getActivity().getPackageManager().hasSystemFeature("android.hardware.camera")) {
 			localDataHolder1.text = R.string.home_menu_qr;
 			this.texts.add(localDataHolder1);
-		}
+		}*/
 		MenuAdapter.DataHolder localDataHolder2 = new MenuAdapter.DataHolder();
 		localDataHolder2.text = R.string.home_menu_apropos;
 		this.texts.add(localDataHolder2);
