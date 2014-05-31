@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/preferences_scanning_title">
+        <CheckBoxPreference android:title="@string/preferences_decode_QR_title" android:key="preferences_decode_QR" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/preferences_decode_Data_Matrix_title" android:key="preferences_decode_Data_Matrix" android:defaultValue="true" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preferences_actions_title">
+        <CheckBoxPreference android:title="@string/preferences_play_beep_title" android:key="preferences_play_beep" android:defaultValue="true" />
+        <CheckBoxPreference android:title="@string/preferences_vibrate_title" android:key="preferences_vibrate" android:defaultValue="false" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preferences_general_title">
+        <CheckBoxPreference android:title="@string/preferences_front_light_title" android:key="preferences_front_light" android:summary="@string/preferences_front_light_summary" android:defaultValue="false" />
+        <CheckBoxPreference android:title="@string/preferences_reverse_image_title" android:key="preferences_reverse_image" android:summary="@string/preferences_reverse_image_summary" android:defaultValue="false" />
+    </PreferenceCategory>
+</PreferenceScreen>

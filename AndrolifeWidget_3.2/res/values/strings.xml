@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AndroLife Widgets</string>
+    <string name="androlife_date_formater">EEEE dd MMMM</string>
+    <string name="androlife_time_formater">à HH:mm</string>
+    <string name="menu_refresh">Mettre à jour</string>
+    <string name="menu_search">Chercher</string>
+    <string name="menu_share">Partager…</string>
+    <string name="widget_asuivrename">Androlife - A Suivre (2x1)</string>
+    <string name="widget_encoursname">Androlife - En cours (2x1)</string>
+    <string name="widget_favorisname">Androlife - Mes favoris (2x1)</string>
+    <string name="widget_nouveautesname">Androlife - Les nouveautés (2x1)</string>
+    <string name="widget_avoirname">Androlife - A voir (2x1)</string>
+    <string name="widget_loading">Chargement</string>
+    <string name="template_user_agent">Android</string>
+
+</resources>

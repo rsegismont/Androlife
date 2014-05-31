@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="50"
+        android:inputType="number"
+        android:key="settings_home_programs_number"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/settings_home_programs_number" />
+
+</PreferenceScreen>

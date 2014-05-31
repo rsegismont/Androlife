@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/agenda_list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/androlife_agenda_margin_normal"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginLeft="@dimen/androlife_agenda_margin_container"
+        android:layout_marginRight="@dimen/androlife_agenda_margin_container"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/agenda_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/androlife_agenda_margin_small"
+            android:layout_weight="50"
+            android:text="@string/androlife_agenda_cancel" />
+
+        <Button
+            android:id="@+id/agenda_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/androlife_agenda_margin_small"
+            android:layout_weight="50"
+            android:text="@string/androlife_agenda_ok" />
+    </LinearLayout>
+
+</LinearLayout>

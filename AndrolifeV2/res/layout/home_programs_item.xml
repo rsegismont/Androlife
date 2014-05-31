@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.rsegismont.androlife.home.HomeBackgroundView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/common_padding_bottom"
+    android:paddingLeft="@dimen/common_margin_vertical"
+    android:paddingRight="@dimen/common_margin_vertical"
+    android:paddingTop="@dimen/common_margin_vertical" >
+
+    <LinearLayout
+        android:id="@+id/home_programs_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/common_margin_vertical"
+        android:layout_marginLeft="@dimen/common_margin_horizontal"
+        android:layout_marginRight="@dimen/common_margin_horizontal"
+        android:layout_marginTop="@dimen/common_margin_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <View
+            android:id="@+id/home_programs_color"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginRight="@dimen/common_margin_vertical"
+            android:background="@android:color/darker_gray" />
+
+        <TextView
+            android:id="@+id/home_programme_large_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="20.0sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/home_programme_large_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/now_height"
+        android:layout_below="@id/home_programs_header"
+        android:layout_marginBottom="@dimen/common_margin_vertical"
+        android:layout_marginLeft="@dimen/common_margin_horizontal"
+        android:layout_marginRight="@dimen/common_margin_horizontal"
+        android:scaleType="centerCrop"
+        android:src="@drawable/toutsuite" />
+
+    <ImageView
+        android:id="@+id/home_programme_large_hd"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignBottom="@id/home_programme_large_image"
+        android:layout_alignLeft="@id/home_programme_large_image"
+        android:layout_marginBottom="@dimen/common_margin_vertical"
+        android:layout_marginLeft="@dimen/common_margin_vertical"
+        android:baselineAlignBottom="true"
+        android:scaleType="fitCenter" />
+
+    <ImageView
+        android:id="@+id/home_programme_large_csa"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignBottom="@id/home_programme_large_image"
+        android:layout_alignRight="@id/home_programme_large_image"
+        android:layout_marginBottom="@dimen/common_margin_vertical"
+        android:layout_marginRight="@dimen/common_margin_vertical"
+        android:baselineAlignBottom="true"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/home_programme_large_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_alignTop="@id/home_programme_large_image"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/common_margin_horizontal"
+        android:layout_marginRight="@dimen/common_margin_horizontal"
+        android:background="@android:drawable/screen_background_dark_transparent"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:textColor="@android:color/white" />
+
+</com.rsegismont.androlife.home.HomeBackgroundView>

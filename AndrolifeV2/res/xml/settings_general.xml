@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <ListPreference
+        android:defaultValue="4"
+        android:entries="@array/settings_general_orientation_keys"
+        android:entryValues="@array/settings_general_orientation_values"
+        android:key="settings_general_orientation"
+        android:title="@string/settings_general_orientation" />
+
+</PreferenceScreen>

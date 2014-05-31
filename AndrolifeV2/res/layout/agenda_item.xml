@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/androlife_agenda_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/androlife_agenda_margin_small"
+        android:layout_marginLeft="@dimen/androlife_agenda_margin_normal"
+        android:layout_marginTop="@dimen/androlife_agenda_margin_small"
+        android:textAppearance="@android:style/TextAppearance.Small"
+        android:textColor="@color/androlife_programs_hint_text" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/androlife_agenda_margin_small"
+        android:layout_marginLeft="@dimen/androlife_agenda_margin_normal"
+        android:layout_marginRight="@dimen/androlife_agenda_margin_normal"
+        android:layout_marginTop="@dimen/androlife_agenda_margin_small"
+        android:background="@color/androlife_programs_hint_underline" />
+
+    <TextView
+        android:id="@+id/androlife_agenda_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/androlife_agenda_margin_normal"
+        android:layout_marginLeft="@dimen/androlife_agenda_margin_normal"
+        android:layout_marginTop="@dimen/androlife_agenda_margin_small"
+        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+</LinearLayout>

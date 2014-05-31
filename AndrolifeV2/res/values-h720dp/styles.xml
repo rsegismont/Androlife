@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Details -->
+
+    <style name="Androlife_Details_Title_Container">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Androlife_Details_Extra_Container">
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Androlife_Details_Top_Container" parent="@style/Androlife_Details_Title_Container_Abstract">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Androlife_Details_Image_Container" parent="@style/Androlife_Details_Image_Container_Abstract">
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="Androlife_Details_Image">
+        <item name="android:layout_width">@dimen/details_width</item>
+        <item name="android:layout_height">@dimen/details_height</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+</resources>

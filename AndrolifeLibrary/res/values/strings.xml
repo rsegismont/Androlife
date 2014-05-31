@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Dates -->
+    <string name="androlife_dates_yesterday">Hier</string>
+    <string name="androlife_dates_today">Aujourd\'hui</string>
+    <string name="androlife_dates_tommorow">Demain</string>
+
+    <!-- Alert Dialog texts -->
+    <string name="app_name">AndrolifeCommon</string>
+
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="settings_performances_transitions_keys">
+        <item>Système</item>
+        <item>Fade</item>
+        <item>Slide</item>
+    </string-array>
+    <string-array name="settings_performances_transitions_values">
+        <item>none</item>
+        <item>fade</item>
+        <item>slide</item>
+    </string-array>
+    <string-array name="settings_general_orientation_keys">
+        <item>Automatique</item>
+        <item>Portrait</item>
+        <item>Paysage</item>
+    </string-array>
+    <string-array name="settings_general_orientation_values">
+        <item>4</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="androlife_agenda_title_list">
+        <item>Titre</item>
+        <item>Période</item>
+        <item>Description</item>
+        <item>Lieu</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:animateLayoutChanges="true" >
+
+    <SurfaceView
+        android:id="@+id/preview_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <com.rsegismont.androlife.noqr.helper.ViewfinderView
+        android:id="@+id/androlife_viewfinder_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/transparent" />
+
+    <include
+        android:id="@+id/result_view"
+        layout="@layout/androlife_noqr_resultview"
+        android:animateLayoutChanges="true" />
+
+    <TextView
+        android:id="@+id/status_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/transparent"
+        android:text="@string/msg_default_status"
+        android:textColor="@color/status_text"
+        android:textSize="14sp" />
+
+</FrameLayout>

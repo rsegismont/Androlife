@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="androlife_camera_url_textsize">10.0sp</dimen>
+    <dimen name="androlife_camera_url_margin">10.0dip</dimen>
+    <dimen name="androlife_camera_image_width">180.0dip</dimen>
+    <dimen name="androlife_camera_image_height">100.0dip</dimen>
+    <dimen name="androlife_camera_image_margin">10.0dip</dimen>
+    <dimen name="androlife_camera_image_description">13.0sp</dimen>
+</resources>

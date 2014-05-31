@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Agenda Part -->
+
+    <dimen name="androlife_agenda_margin_container">6dp</dimen>
+    <dimen name="androlife_agenda_margin_normal">10dp</dimen>
+    <dimen name="androlife_agenda_margin_small">2dp</dimen>
+    
+    <!-- General Part -->
+    <dimen name="common_padding_bottom">16dp</dimen>
+    <dimen name="common_margin_vertical">8dp</dimen>
+    <dimen name="common_margin_horizontal">4dp</dimen>
+
+    <!--  -->
+
+    <dimen name="details_width">480dp</dimen>
+    <dimen name="details_height">270dp</dimen>
+    <dimen name="home_activities_textsize">22sp</dimen>
+    <dimen name="home_activities_margin">16dp</dimen>
+
+    <dimen name="now_height">180dp</dimen>
+    <dimen name="list_margin">2dp</dimen>
+    <dimen name="list_image_width">100dp</dimen>
+    <dimen name="list_image_height">55dp</dimen>
+    <dimen name="actionbar_home_width">60dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+    <dimen name="androlife_about_me_title_textsize">20sp</dimen>
+    <dimen name="androlife_about_me_content_textsize">18sp</dimen>
+    <dimen name="androlife_camera_url_textsize">25sp</dimen>
+    <dimen name="androlife_camera_url_margin">15dp</dimen>
+    <dimen name="androlife_camera_image_width">350dp</dimen>
+    <dimen name="androlife_camera_image_height">180dp</dimen>
+    <dimen name="androlife_camera_image_margin">15dp</dimen>
+    <dimen name="androlife_camera_image_description">20sp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+</resources>

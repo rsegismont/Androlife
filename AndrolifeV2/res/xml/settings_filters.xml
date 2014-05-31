@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="settings_filters_clip"
+        android:summaryOff="@string/settings_summary_off"
+        android:summaryOn="@string/settings_summary_on"
+        android:title="@string/settings_filters_clip" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="settings_filters_magazines"
+        android:summaryOff="@string/settings_summary_off"
+        android:summaryOn="@string/settings_summary_on"
+        android:title="@string/settings_filters_magazines" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="settings_filters_series"
+        android:summaryOff="@string/settings_summary_off"
+        android:summaryOn="@string/settings_summary_on"
+        android:title="@string/settings_filters_series" />
+
+</PreferenceScreen>

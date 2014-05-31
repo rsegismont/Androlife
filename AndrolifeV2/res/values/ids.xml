@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="abs__home" />
+    <item type="id" name="abs__up" />
+    <item type="id" name="abs__action_menu_divider" />
+    <item type="id" name="abs__action_menu_presenter" />
+    <item type="id" name="abs__progress_circular" />
+    <item type="id" name="abs__progress_horizontal" />
+    <item type="id" name="auto_focus" />
+    <item type="id" name="decode" />
+    <item type="id" name="decode_failed" />
+    <item type="id" name="decode_succeeded" />
+    <item type="id" name="quit" />
+    <item type="id" name="restart_preview" />
+    <item type="id" name="return_scan_result" />
+    <item type="id" name="about_pager">false</item>
+    <item type="id" name="about_content">false</item>
+    <item type="id" name="about_versionNumber">false</item>
+    <item type="id" name="about_me_container">false</item>
+    <item type="id" name="about_me_photo">false</item>
+    <item type="id" name="about_me_name">false</item>
+    <item type="id" name="about_me_content">false</item>
+    <item type="id" name="abs__action_bar_title">false</item>
+    <item type="id" name="abs__action_bar_subtitle">false</item>
+    <item type="id" name="abs__imageButton">false</item>
+    <item type="id" name="abs__textButton">false</item>
+    <item type="id" name="abs__action_mode_close_button">false</item>
+    <item type="id" name="abs__activity_chooser_view_content">false</item>
+    <item type="id" name="abs__expand_activities_button">false</item>
+    <item type="id" name="abs__image">false</item>
+    <item type="id" name="abs__default_activity_button">false</item>
+    <item type="id" name="abs__list_item">false</item>
+    <item type="id" name="abs__icon">false</item>
+    <item type="id" name="abs__title">false</item>
+    <item type="id" name="abs__checkbox">false</item>
+    <item type="id" name="abs__radio">false</item>
+    <item type="id" name="abs__shortcut">false</item>
+    <item type="id" name="abs__action_bar_container">false</item>
+    <item type="id" name="abs__action_bar">false</item>
+    <item type="id" name="abs__action_context_bar">false</item>
+    <item type="id" name="abs__content">false</item>
+    <item type="id" name="abs__split_action_bar">false</item>
+    <item type="id" name="abs__action_mode_bar_stub">false</item>
+    <item type="id" name="abs__action_mode_bar">false</item>
+    <item type="id" name="edit_query">false</item>
+    <item type="id" name="abs__search_bar">false</item>
+    <item type="id" name="abs__search_badge">false</item>
+    <item type="id" name="abs__search_button">false</item>
+    <item type="id" name="abs__search_edit_frame">false</item>
+    <item type="id" name="abs__search_mag_icon">false</item>
+    <item type="id" name="abs__search_plate">false</item>
+    <item type="id" name="abs__search_src_text">false</item>
+    <item type="id" name="abs__search_close_btn">false</item>
+    <item type="id" name="abs__submit_area">false</item>
+    <item type="id" name="abs__search_go_btn">false</item>
+    <item type="id" name="abs__search_voice_btn">false</item>
+    <item type="id" name="agenda_title">false</item>
+    <item type="id" name="agenda_title_content">false</item>
+    <item type="id" name="agenda_description">false</item>
+    <item type="id" name="agenda_description_content">false</item>
+    <item type="id" name="agenda_location">false</item>
+    <item type="id" name="agenda_location_content">false</item>
+    <item type="id" name="agenda_time">false</item>
+    <item type="id" name="agenda_time_content">false</item>
+    <item type="id" name="agenda_cancel">false</item>
+    <item type="id" name="agenda_ok">false</item>
+    <item type="id" name="preview_view">false</item>
+    <item type="id" name="status_view">false</item>
+    <item type="id" name="detail_content">false</item>
+    <item type="id" name="androlife_detail_image">false</item>
+    <item type="id" name="androlife_detail_title">false</item>
+    <item type="id" name="androlife_detail_csa">false</item>
+    <item type="id" name="detail_item_title">false</item>
+    <item type="id" name="detail_item_separator">false</item>
+    <item type="id" name="detail_item_content">false</item>
+    <item type="id" name="frame">false</item>
+    <item type="id" name="menu_itemTitle">false</item>
+    <item type="id" name="home_programme_large_description">false</item>
+    <item type="id" name="home_programme_large_subtitle">false</item>
+    <item type="id" name="home_programme_large_image">false</item>
+    <item type="id" name="home_programme_large_csa">false</item>
+    <item type="id" name="home_programs_header">false</item>
+    <item type="id" name="home_programs_color">false</item>
+    <item type="id" name="host_tab_viewpager">false</item>
+    <item type="id" name="host_tab_title">false</item>
+    <item type="id" name="programm_list_viewpager">false</item>
+    <item type="id" name="list_programmes_color">false</item>
+    <item type="id" name="list_programmes_image">false</item>
+    <item type="id" name="list_programmes_data">false</item>
+    <item type="id" name="list_programmes_data2">false</item>
+    <item type="id" name="drawer_layout">false</item>
+    <item type="id" name="main_frag_list">false</item>
+    <item type="id" name="left_drawer">false</item>
+    <item type="id" name="listview_programmes">false</item>
+    <item type="id" name="text">false</item>
+    <item type="id" name="list">false</item>
+    <item type="id" name="container">false</item>
+    <item type="id" name="title">false</item>
+    <item type="id" name="about_icon_sitenolife">false</item>
+    <item type="id" name="detail_viewnolifeonline">false</item>
+    <item type="id" name="detail_register_calendar">false</item>
+    <item type="id" name="detail_discuss_forum">false</item>
+    <item type="id" name="menu_refresh">false</item>
+    <item type="id" name="menu_search">false</item>
+    <item type="id" name="menu_exit">false</item>
+    <item type="id" name="menu_list_programmes_now">false</item>
+    <item type="id" name="menu_list_programmes_tonight">false</item>
+    <item type="id" name="menu_list_programmes_settings">false</item>
+</resources>

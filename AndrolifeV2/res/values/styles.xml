@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Details -->
+
+    <style name="Androlife_Details_Title_Container">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Androlife_Details_Extra_Container">
+        <item name="android:gravity">bottom|center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Androlife_Details_Image_Container" parent="@style/Androlife_Details_Image_Container_Abstract">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="Androlife_Details_Image_Container_Abstract">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/common_margin_vertical</item>
+        <item name="android:background">@drawable/card</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="Androlife_Details_Top_Container" parent="@style/Androlife_Details_Title_Container_Abstract">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Androlife_Details_Title_Container_Abstract">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/card</item>
+        <item name="android:padding">@dimen/common_margin_vertical</item>
+    </style>
+
+    <style name="Androlife_Details_Abstract">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="Androlife_Details_Image">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/now_height</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="Androlife_Details_Title" parent="@style/Androlife_Details_Abstract">
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
+    </style>
+
+    <style name="Androlife_Details_SubTitle" parent="@style/Androlife_Details_Abstract">
+        <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
+    </style>
+
+    <!-- NoQr Theme -->
+
+    <style name="Androlife_Noqr_Theme_Camera" parent="@style/Theme.Sherlock.Light.NoActionBar" />
+
+    <style name="Buttonandrolife_camera_button_theme" parent="@android:style/Widget.Button">
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:minWidth">64.0dip</item>
+        <item name="android:minHeight">48.0dip</item>
+    </style>
+
+    <style name="ImageButtonandrolife_camera_button_theme" parent="@android:style/Widget.ImageButton"></style>
+
+    <style name="androlife_camera_button_theme" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/Buttonandrolife_camera_button_theme</item>
+        <item name="android:imageButtonStyle">@style/ImageButtonandrolife_camera_button_theme</item>
+    </style>
+
+    <!-- General Theme -->
+    <style name="Widget" />
+
+    <style name="MyListView" parent="@android:style/Widget.ListView">
+        <item name="android:listSelector">@drawable/androlife_list_selector</item>
+    </style>
+    
+     <style name="Androlife_Theme_Transparent" parent="Androlife_Theme">
+    </style>
+
+    <style name="Androlife_Theme" parent="@style/Theme.Androlife">
+        <item name="android:colorBackgroundCacheHint">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:listViewStyle">@style/MyListView</item>
+        <item name="android:gridViewStyle">@style/MyListView</item>
+    </style>
+
+</resources>

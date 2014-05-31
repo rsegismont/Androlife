@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="now_height">288.0dip</dimen>
+    <dimen name="androlife_about_me_title_textsize">23.0sp</dimen>
+    <dimen name="androlife_about_me_content_textsize">21.0sp</dimen>
+    <dimen name="androlife_camera_url_textsize">22.0sp</dimen>
+    <dimen name="androlife_camera_url_margin">30.0dip</dimen>
+    <dimen name="androlife_camera_image_width">440.0dip</dimen>
+    <dimen name="androlife_camera_image_height">230.0dip</dimen>
+    <dimen name="androlife_camera_image_margin">45.0dip</dimen>
+    <dimen name="androlife_camera_image_description">45.0sp</dimen>
+    <dimen name="widget_margin">3.0dip</dimen>
+    <dimen name="list_width">384.0dip</dimen>
+    <dimen name="androlife_image_witdh">550.0dip</dimen>
+</resources>

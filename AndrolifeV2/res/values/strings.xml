@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- About -->
+
+    <string name="androlife_about_nolife_content">Nolife est une chaîne de télévision thématique française axée sur la culture geek et la musique japonaise. Son slogan est « Y a pas que la vraie vie dans la vie ! ». Dans une bande annonce, Sébastien Ruchet, président de la chaîne, met en garde : « Si vous ne comprenez pas, vous pouvez zapper », dénotant le ton résolument différent et décalé de la chaîne. Pour plus de détails : \n\nhttp://www.nolife-tv.com/\n\nhttp://nolife-wiki.fr/Accueil</string>
+    <string name="androlife_about_nolife_title">Nolife</string>
+    <string name="androlife_about_actionbarsherlock_content">ActionBarSherlock est utilisé afin de fournir une interface unique sur toutes les version d\'Android. Pour plus de détails :  \n\nhttp://actionbarsherlock.com</string>
+    <string name="androlife_about_zxing_content">ZXing est utilisé afin de pouvoir scanner les QR codes dans Androlife. Pour plus de détails :  \n\nhttp://code.google.com/p/zxing/</string>
+    <string name="androlife_about_disklrucache_content">Disk LRU cache est utilisé afin de stocker les images téléchargées dans l\'application. Pour plus de détails :  \n\nhttps://github.com/JakeWharton/DiskLruCache</string>
+    <string name="androlife_about_actionbarsherlock_title">ActionBarSherlock</string>
+    <string name="androlife_about_zxing_title">ZXing</string>
+    <string name="androlife_about_disklrucache_title">DiskLruCache</string>
+    <string name="androlife_about_version">Version %1$s</string>
+
+    <!-- Agenda -->
+    <string name="androlife_agenda_add_success">Le programme a bien été ajouté à votre agenda</string>
+    <string name="androlife_agenda_add_fail">Désolé, le programme n\'as pas pu être ajouté à votre agenda</string>
+    <string name="androlife_agenda_ok">OK</string>
+    <string name="androlife_agenda_cancel">Annuler</string>
+    <string name="androlife_agenda_subtitle">Ajouter un rappel</string>
+    <string name="androlife_agenda_date">De %1$s à %2$s</string>
+
+    <!-- Formating -->
+    <string name="androlife_time_tabs">dd MMMM</string>
+    <string name="date_details_header">dd MMMM</string>
+    <string name="androlife_time_home_hint">EEEE dd MMMM</string>
+    <string name="androlife_time_rediff">dd MMMM à kk:mm</string>
+
+    <!-- Alert Dialogs -->
+    <string name="alert_dialog_exit">Quitter</string>
+    <string name="alert_dialog_hd_title">Une version d\'Androlife Core plus récente est requise pour fonctionner ( support de l\'attribut HD)</string>
+    <string name="alert_dialog_hd_ok">Télécharger</string>
+    <string name="alert_dialog_market_title">Librairie Androlife manquante</string>
+    <string name="alert_dialog_market_ok">Télécharger</string>
+    <string name="alert_dialog_exit_cancel">Rester</string>
+    <string name="alert_dialog_exit_title">Etes vous sur de vouloir quitter Androlife ?</string>
+    <string name="alert_dialog_update_title">Une version plus récente des programmes est disponible</string>
+    <string name="app_name">Androlife</string>
+    <string name="format_database">yyyy/MM/dd HH:mm</string>
+    <string name="app_name_main">Androlife</string>
+    <string name="program_list_title">Liste des Programmes</string>
+
+    <!-- Subtitle Dailogs -->
+    <string name="subtitle_all">Tous</string>
+    <string name="subtitle_selection">A voir</string>
+    <string name="subtitle_news">Les nouveautés</string>
+    <string name="subtitle_query">Ma recherche</string>
+    <string name="search_label">Androlife</string>
+    <string name="search_hint">Rechercher un programme</string>
+    <string name="programme_play">Regarder sur Nolife Online</string>
+    <string name="programme_register_calendar">Ajouter à mon agenda</string>
+    <string name="programme_discuss_forum">En discuter sur le forum</string>
+
+    <!-- Settings Dailogs -->
+    <string name="settings_home">Accueil</string>
+    <string name="settings_summary_on">affichées</string>
+    <string name="settings_summary_off">non affichées</string>
+    <string name="settings_description">Rechercher un programme</string>
+    <string name="settings_filters">Filtrer les émissions</string>
+    <string name="settings_filters_clip">Clips</string>
+    <string name="settings_filters_magazines">Magazines</string>
+    <string name="settings_filters_series">Séries / Fictions</string>
+    <string name="settings_general">Général</string>
+    <string name="settings_general_orientation">Orientation</string>
+    <string name="settings_performances">Performances</string>
+    <string name="settings_performances_effects_title">Choisir un effet de transition</string>
+    <string name="settings_performances_images">Décochez pour obtenir de meilleures performances</string>
+    <string name="settings_performances_images_title">Afficher les images</string>
+    <string name="settings_home_programs_number">Nombre de programmes à afficher</string>
+    <string name="search_instructions">Rechercher un programme</string>
+    <string name="no_results">Aucun résultat pour \"%s\"</string>
+    <string name="fragment_now_text">Maintenant</string>
+    <string name="about_icon_sitenolife">Site web de nolife</string>
+    <string name="about_nolife_url">http://www.nolife-tv.com</string>
+    <string name="about_section3">Librairies</string>
+    <string name="about_section2">Développeur</string>
+    <string name="about_section1">Androlife</string>
+    <string name="home_gridcount">1</string>
+    <string name="home_menu_closed">Accueil</string>
+    <string name="home_menu_open">Menu</string>
+    <string name="home_menu_programmes">La grille</string>
+    <string name="home_menu_smartguide">A voir</string>
+    <string name="home_menu_news">Nouveau</string>
+    <string name="home_menu_qr">QR Code</string>
+    <string name="home_menu_apropos">A propos</string>
+    <string name="menu_get_tonight">"Qu'y a-t'il à 19h ?"</string>
+    <string name="menu_get_now">Maintenant</string>
+    <string name="menu_search">Chercher un programme</string>
+    <string name="menu_refresh">Mettre à jour</string>
+    <string name="button_ok">OK</string>
+    <string name="androlife_camera_detail">Voir la fiche</string>
+    <string name="androlife_camera_see">Regarder sur Nolife Online</string>
+    <string name="androlife_camera_see_normal">Voir ce site</string>
+    <string name="androlife_camera_scananother">Scanner un autre QR</string>
+    <string name="menu_settings">Paramètres</string>
+    <string name="msg_camera_framework_bug">"Désolé, la caméra Android rencontré un problème. Un redémarrage de l'appareil est peut-être nécessaire."</string>
+    <string name="msg_default_status">"Placer un code barre à l'intérieur du rectangle pour le scanner."</string>
+    <string name="preferences_actions_title">Quand un code-barres est trouvé…</string>
+    <string name="preferences_decode_Data_Matrix_title">Data Matrix</string>
+    <string name="preferences_decode_QR_title">QR</string>
+    <string name="preferences_front_light_summary">Allumer la lampe derrière le téléphone quand la lumière ambiante est faible. Peut provoquer des reflets et ne fonctionne pas sur tous les téléphones.</string>
+    <string name="preferences_front_light_title">Flash</string>
+    <string name="preferences_general_title">Paramètres généraux</string>
+    <string name="preferences_name">Paramètres</string>
+    <string name="preferences_play_beep_title">Bip</string>
+    <string name="preferences_reverse_image_summary">"Activer sur les appareils uniquement dotés d'une caméra frontale"</string>
+    <string name="preferences_reverse_image_title">"Retourner l'image"</string>
+    <string name="preferences_scanning_title">Pendant la numérisation, lire les codes…</string>
+    <string name="preferences_vibrate_title">Vibrer</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact based on your message history</string>
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_qr">QrActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="noqr_underconstructin">Le Scan de QR code sera de retour dans la prochaine version.</string>
+
+</resources>
