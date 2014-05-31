@@ -3,7 +3,7 @@
     package="com.rsegismont.androlife"
     android:installLocation="preferExternal"
     android:versionCode="17"
-    android:versionName="1.4 - Kiwi" >
+    android:versionName="1.2.1 - Kiwi" >
 
     <supports-screens
         android:anyDensity="true"
