@@ -33,8 +33,7 @@
 
     <application
         android:name="com.rsegismont.androlife.application.AndrolifeApplication"
-        android:allowBackup="true"
-        android:backupAgent="com.rsegismont.androlife.backup.AndrolifeBackupAgent"
+        android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name_main"
