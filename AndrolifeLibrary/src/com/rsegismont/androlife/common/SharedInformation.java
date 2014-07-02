@@ -11,6 +11,8 @@ public class SharedInformation {
 	
 	/** Database version where HD attribute was added */
 	public static final int DATABASE_HD_VERSION = 7;
+	public static final int DATABASE_NOCO_VERSION = 9;
+
 
 	public static String AUTHORITY = "com.rsegismont.android.androLife.core.AndrolifeProvider";
 
