@@ -127,7 +127,7 @@ public class AndrolifeProvider extends ContentProvider {
 				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
 				onCreate(db);
 			}
-			if (oldVersion <= SharedInformation.DATABASE_NOCO_VERSION) {
+			if (oldVersion < SharedInformation.DATABASE_NOCO_VERSION) {
 				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
 				onCreate(db);
 			}
