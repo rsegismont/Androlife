@@ -120,7 +120,19 @@ public class AndrolifeProvider extends ContentProvider {
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			if (oldVersion < SharedInformation.DATABASE_HD_VERSION
 					&& newVersion >= SharedInformation.DATABASE_HD_VERSION) {
-			
+				db.execSQL("ALTER TABLE " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME + " ADD "
+						+ DatabaseColumn.HD.stringValue + " VARCHAR(35) default '0'");
+			}
+			if (oldVersion == SharedInformation.DATABASE_HD_VERSION) {
+				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
+				onCreate(db);
+			}
+			if (oldVersion <= SharedInformation.DATABASE_NOCO_VERSION) {
+				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
+				onCreate(db);
+			}
+
+		}
 
 		@Override
 		public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
