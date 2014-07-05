@@ -5,10 +5,6 @@
         <item quantity="other">%1$d programmes chargés</item>
         <item quantity="one">1 programme chargé</item>
     </plurals>
-    <plurals name="twitter_loaded">
-        <item quantity="other">%d twitts chargés</item>
-        <item quantity="one">1 twitt chargé</item>
-    </plurals>
     <plurals name="search_results">
         <item quantity="other">%1$d résultats pour \"%2$s\":</item>
         <item quantity="one">%1$d résultat pour \"%2$s\":</item>
