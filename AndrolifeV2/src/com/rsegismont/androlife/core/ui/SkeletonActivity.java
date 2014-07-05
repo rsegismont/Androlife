@@ -45,9 +45,9 @@ import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.utils.ImageCacher;
 import com.rsegismont.androlife.common.utils.ImageFetcher;
 import com.rsegismont.androlife.common.utils.Utils;
+import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
+import com.rsegismont.androlife.core.utils.ActivityEffectsHelper.EffectListener;
 import com.rsegismont.androlife.settings.SettingsActivity;
-import com.rsegismont.androlife.utils.ActivityEffectsHelper;
-import com.rsegismont.androlife.utils.ActivityEffectsHelper.EffectListener;
 
 /**
  * Base class for all Androlife Activities

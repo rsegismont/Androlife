@@ -31,11 +31,10 @@ import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
 import com.rsegismont.androlife.core.ui.AndrolifeFragment;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
-import com.rsegismont.androlife.utils.AndrolifeViewFactory;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
+import com.rsegismont.androlife.core.utils.AndrolifeViewFactory;
 
-public class DetailsFragment extends AndrolifeFragment implements
-		LoaderCallbacks<Cursor> {
+public class DetailsFragment extends AndrolifeFragment implements LoaderCallbacks<Cursor> {
 	public static final String CURSOR = "cursor";
 	public static final String TIME = "time";
 	private int height;
@@ -62,43 +61,28 @@ public class DetailsFragment extends AndrolifeFragment implements
 
 			final long currentTime = System.currentTimeMillis();
 
-			final String endTimeString = values
-					.getAsString(DatabaseColumn.NolifeOnlineEnd.stringValue);
+			final String endTimeString = values.getAsString(DatabaseColumn.NolifeOnlineEnd.stringValue);
 
-			startTime = AndrolifeUtils.stringToDate(values
-					.getAsString(DatabaseColumn.NolifeOnlineStart.stringValue),
+			startTime = AndrolifeUtils.stringToDate(values.getAsString(DatabaseColumn.NolifeOnlineStart.stringValue),
 					getResources().getString(R.string.format_database), true);
 
 			Date endTime;
 			if (TextUtils.isEmpty(endTimeString))
 				endTime = new Date(currentTime + 1000);
 			else
-				endTime = AndrolifeUtils
-						.stringToDate(
-								values.getAsString(DatabaseColumn.NolifeOnlineEnd.stringValue),
-								getResources().getString(
-										R.string.format_database), true);
+				endTime = AndrolifeUtils.stringToDate(values.getAsString(DatabaseColumn.NolifeOnlineEnd.stringValue),
+						getResources().getString(R.string.format_database), true);
 
-			if ((currentTime >= startTime.getTime())
-					&& (currentTime <= endTime.getTime())) {
+			if ((currentTime >= startTime.getTime()) && (currentTime <= endTime.getTime())) {
 				this.isAvailableOnNO = true;
-				this.noUrl = values
-						.getAsString(DatabaseColumn.NolifeOnlineURL.stringValue);
-
-				if (TextUtils.isEmpty(noUrl)) {
-					this.noUrl = values
-							.getAsString(DatabaseColumn.NolifeOnlineExternalURL.stringValue);
-				}
-
+				this.noUrl = values.getAsString(DatabaseColumn.NolifeOnlineURL.stringValue);
 			}
 
 		} catch (Throwable e) {
 
 		}
 
-		mDate = getDateFormatter()
-				.format(new Date(values
-						.getAsLong(DatabaseColumn.DATE_UTC.stringValue)));
+		mDate = getDateFormatter().format(new Date(values.getAsLong(DatabaseColumn.DATE_UTC.stringValue)));
 
 	}
 
@@ -115,8 +99,7 @@ public class DetailsFragment extends AndrolifeFragment implements
 			menu.findItem(R.id.detail_discuss_forum).setVisible(false);
 		}
 		if (Build.VERSION.SDK_INT > 7
-				&& (System.currentTimeMillis() <= values
-						.getAsLong(DatabaseColumn.DATE_UTC.stringValue))) {
+				&& (System.currentTimeMillis() <= values.getAsLong(DatabaseColumn.DATE_UTC.stringValue))) {
 			menu.findItem(R.id.detail_register_calendar).setVisible(true);
 		} else {
 			menu.findItem(R.id.detail_register_calendar).setVisible(false);
@@ -137,14 +120,11 @@ public class DetailsFragment extends AndrolifeFragment implements
 		setupDatas();
 
 		if (SdkUtils.isATablet(getActivity())) {
-			this.width = getResources().getDimensionPixelSize(
-					R.dimen.details_width);
-			this.height = getResources().getDimensionPixelSize(
-					R.dimen.details_height);
+			this.width = getResources().getDimensionPixelSize(R.dimen.details_width);
+			this.height = getResources().getDimensionPixelSize(R.dimen.details_height);
 		} else {
 			this.width = getResources().getDisplayMetrics().widthPixels;
-			this.height = getResources().getDimensionPixelSize(
-					R.dimen.now_height);
+			this.height = getResources().getDimensionPixelSize(R.dimen.now_height);
 		}
 
 	}
@@ -169,64 +149,46 @@ public class DetailsFragment extends AndrolifeFragment implements
 		getLoaderManager().initLoader(500, null, this);
 	}
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle paramBundle) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle paramBundle) {
 
-		final View view = inflater.inflate(R.layout.androlife_details_fragment,
-				container, false);
+		final View view = inflater.inflate(R.layout.androlife_details_fragment, container, false);
 
-		final View headerView = inflater.inflate(
-				R.layout.androlife_details_header, null, false);
+		final View headerView = inflater.inflate(R.layout.androlife_details_header, (ViewGroup) view, false);
 
 		// Image
-		mImageView = (ImageView) headerView
-				.findViewById(R.id.androlife_detail_image);
+		mImageView = (ImageView) headerView.findViewById(R.id.androlife_detail_image);
 
-		final ImageView mHdView = (ImageView) headerView
-				.findViewById(R.id.androlife_detail_hd);
-		final ImageView mCsaView = (ImageView) headerView
-				.findViewById(R.id.androlife_detail_csa);
-		final TextView mTitleView = (TextView) headerView
-				.findViewById(R.id.androlife_detail_title);
+		final ImageView mHdView = (ImageView) headerView.findViewById(R.id.androlife_detail_hd);
+		final ImageView mCsaView = (ImageView) headerView.findViewById(R.id.androlife_detail_csa);
+		final TextView mTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_title);
 		final TextView mDateView = null;
 
-		final TextView mTypeView = (TextView) headerView
-				.findViewById(R.id.androlife_detail_type);
-		final ListView mListView = (ListView) view
-				.findViewById(R.id.detail_content);
+		final TextView mTypeView = (TextView) headerView.findViewById(R.id.androlife_detail_type);
+		final ListView mListView = (ListView) view.findViewById(R.id.detail_content);
 
 		SdkUtils.setTextViewRoboto(mDateView, "Roboto-Regular");
 
 		this.mTimeEnd = getArguments().getLong(TIME);
 		if (this.mTimeEnd == -1) {
 			this.mTimeEnd = (SdkUtils.ONE_HOUR + this.values.getAsLong(
-					SharedInformation.DatabaseColumn.DATE_UTC.stringValue)
-					.longValue());
+					SharedInformation.DatabaseColumn.DATE_UTC.stringValue).longValue());
 		}
 
 		AndrolifeViewFactory.displayImage(mImageView, values, width, height);
-		AndrolifeViewFactory.addCsaView(mCsaView, values
-				.getAsString(SharedInformation.DatabaseColumn.CSA.stringValue));
-		AndrolifeViewFactory.addHdView(mHdView, values
-				.getAsString(SharedInformation.DatabaseColumn.HD.stringValue),
+		AndrolifeViewFactory.addCsaView(mCsaView, values.getAsString(SharedInformation.DatabaseColumn.CSA.stringValue));
+		AndrolifeViewFactory.addHdView(mHdView, values.getAsString(SharedInformation.DatabaseColumn.HD.stringValue),
 				true);
 
-		final TextView mSubTitleView = (TextView) headerView
-				.findViewById(R.id.androlife_detail_subtitle);
+		final TextView mSubTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_subtitle);
 
 		SdkUtils.setTextViewRoboto(mSubTitleView, "Roboto-Regular");
 		SdkUtils.setTextViewRoboto(mTitleView, "Roboto-Bold");
 
 		// Type
-		mTypeView
-				.setText(values
-						.getAsString(SharedInformation.DatabaseColumn.TYPE.stringValue));
+		mTypeView.setText(values.getAsString(SharedInformation.DatabaseColumn.TYPE.stringValue));
 
-		mTitleView
-				.setText(values
-						.getAsString(SharedInformation.DatabaseColumn.TITLE.stringValue));
-		final String subTitle = values
-				.getAsString(SharedInformation.DatabaseColumn.SUBTITLE.stringValue);
+		mTitleView.setText(values.getAsString(SharedInformation.DatabaseColumn.TITLE.stringValue));
+		final String subTitle = values.getAsString(SharedInformation.DatabaseColumn.SUBTITLE.stringValue);
 		if (mSubTitleView != null) {
 			if (TextUtils.isEmpty(subTitle)) {
 				mSubTitleView.setVisibility(View.GONE);
@@ -240,9 +202,8 @@ public class DetailsFragment extends AndrolifeFragment implements
 		 */
 
 		mListView.addHeaderView(headerView);
-		mAdapter = new DetailsContentAdapter((ProgrammeAbstract) getActivity(),
-				this.values, R.layout.androlife_details_item,
-				this.isAvailableOnNO, this.startTime);
+		mAdapter = new DetailsContentAdapter((ProgrammeAbstract) getActivity(), this.values,
+				R.layout.androlife_details_item, this.isAvailableOnNO, this.startTime);
 		mListView.setAdapter(mAdapter);
 		return mListView;
 
@@ -256,8 +217,7 @@ public class DetailsFragment extends AndrolifeFragment implements
 
 			try {
 
-				startActivity(SdkUtils.prepare_web(getActivity(),
-						AndrolifeUtils.getMobileUrl(noUrl)));
+				startActivity(SdkUtils.prepare_web(getActivity(), noUrl));
 			} catch (Throwable e) {
 				e.printStackTrace();
 			}
@@ -266,11 +226,9 @@ public class DetailsFragment extends AndrolifeFragment implements
 		case R.id.detail_register_calendar:
 
 			CalendarWrapper.registerCalendarEvent(getActivity(),
-					values.getAsString(DatabaseColumn.DESCRIPTION.stringValue),
-					"Nolife TV",
+					values.getAsString(DatabaseColumn.DESCRIPTION.stringValue), "Nolife TV",
 					values.getAsString(DatabaseColumn.DETAIL.stringValue),
-					values.getAsLong(DatabaseColumn.DATE_UTC.stringValue),
-					mTimeEnd);
+					values.getAsLong(DatabaseColumn.DATE_UTC.stringValue), mTimeEnd);
 			return true;
 
 		case R.id.detail_discuss_forum:
@@ -294,17 +252,11 @@ public class DetailsFragment extends AndrolifeFragment implements
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
-		return new CursorLoader(
-				getActivity(),
-				SharedInformation.CONTENT_URI_PROGRAMMES,
-				null,
-				DatabaseColumn.DESCRIPTION.stringValue + " =? AND "
-						+ DatabaseColumn.DATE_UTC.stringValue + "<>? AND "
-						+ DatabaseColumn.DATE_UTC.stringValue + ">?",
-				new String[] {
+		return new CursorLoader(getActivity(), SharedInformation.CONTENT_URI_PROGRAMMES, null,
+				DatabaseColumn.DESCRIPTION.stringValue + " =? AND " + DatabaseColumn.DATE_UTC.stringValue + "<>? AND "
+						+ DatabaseColumn.DATE_UTC.stringValue + ">?", new String[] {
 						values.getAsString(DatabaseColumn.DESCRIPTION.stringValue),
-						String.valueOf(values
-								.getAsLong(DatabaseColumn.DATE_UTC.stringValue)),
+						String.valueOf(values.getAsLong(DatabaseColumn.DATE_UTC.stringValue)),
 						String.valueOf(System.currentTimeMillis()) },
 				SharedInformation.DatabaseColumn.DATE_UTC.stringValue + " ASC");
 	}
@@ -324,7 +276,7 @@ public class DetailsFragment extends AndrolifeFragment implements
 						}
 					}
 				}
-				mAdapter.addToAdapter("Rediffusions", sb.toString());
+				// mAdapter.addToAdapter("Rediffusions", sb.toString());
 				mAdapter.notifyDataSetChanged();
 			}
 

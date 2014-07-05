@@ -5,8 +5,8 @@ import android.graphics.Bitmap;
 
 @TargetApi(19)
 public class AndrolifeApi19 {
-	
-	public static int getAllocationByteCount(Bitmap bitmap){
+
+	public static int getAllocationByteCount(Bitmap bitmap) {
 		return bitmap.getAllocationByteCount();
 	}
 

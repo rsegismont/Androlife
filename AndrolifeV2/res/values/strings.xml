@@ -29,10 +29,8 @@
 
     <!-- Alert Dialogs -->
     <string name="alert_dialog_exit">Quitter</string>
-    <string name="alert_dialog_hd_title">Une version d\'Androlife Core plus récente est requise pour fonctionner ( support de l\'attribut HD)</string>
-    <string name="alert_dialog_hd_ok">Télécharger</string>
-    <string name="alert_dialog_market_title">Librairie Androlife manquante</string>
-    <string name="alert_dialog_market_ok">Télécharger</string>
+    <string name="alert_dialog_core_title">Androlife Core n\'est plus nécessaire, veuillez le désinstaller</string>
+    <string name="alert_dialog_core_ok">OK</string>
     <string name="alert_dialog_exit_cancel">Rester</string>
     <string name="alert_dialog_exit_title">Etes vous sur de vouloir quitter Androlife ?</string>
     <string name="alert_dialog_update_title">Une version plus récente des programmes est disponible</string>

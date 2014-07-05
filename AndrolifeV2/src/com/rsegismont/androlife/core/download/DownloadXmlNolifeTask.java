@@ -30,11 +30,10 @@ import android.text.format.DateUtils;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 
 public class DownloadXmlNolifeTask extends AsyncTask<Void, Integer, Void> {
 
-	private static final String NOAIR_URL = "http://www.nolife-tv.com/noair/noair.xml";
 	private static final int BATCH_SIZE = 200;
 
 	private Context mContext;
@@ -61,7 +60,8 @@ public class DownloadXmlNolifeTask extends AsyncTask<Void, Integer, Void> {
 	public void downloadXML() {
 		try {
 			// final InputStream localInputStream = AndrolifeUtils.getInputStreamUrl(mContext, NOAIR_URL);
-			final InputStream localInputStream = AndrolifeUtils.getInputStreamUrl(mContext, NOAIR_URL);
+			final InputStream localInputStream = AndrolifeUtils.getInputStreamUrl(mContext,
+					SharedInformation.urlProgramme);
 			if (localInputStream == null) {
 				return;
 			}
@@ -148,7 +148,7 @@ public class DownloadXmlNolifeTask extends AsyncTask<Void, Integer, Void> {
 
 				xmlTask.mContext.getContentResolver().notifyChange(SharedInformation.CONTENT_URI_PROGRAMMES, null);
 				PreferenceManager.getDefaultSharedPreferences(xmlTask.mContext.getApplicationContext()).edit()
-						.putLong(NOAIR_URL, AndrolifeUtils.timeToConfirm).commit();
+						.putLong(SharedInformation.urlProgramme, AndrolifeUtils.timeToConfirm).commit();
 			}
 		}
 

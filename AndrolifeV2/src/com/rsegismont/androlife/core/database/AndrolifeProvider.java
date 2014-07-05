@@ -21,7 +21,7 @@
  * 
  */
 
-package com.rsegismont.android.androLife.core;
+package com.rsegismont.androlife.core.database;
 
 import java.util.ArrayList;
 
@@ -53,8 +53,8 @@ import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
  */
 public class AndrolifeProvider extends ContentProvider {
 
-	public static final String CONTENT_PROVIDER_DB_NAME = "androlife_provider.db";
-	public static final int CONTENT_PROVIDER_DB_VERSION = 9;
+	public static final String CONTENT_PROVIDER_DB_NAME = "androlife_v2_provider.db";
+	public static final int CONTENT_PROVIDER_DB_VERSION = 1;
 
 	/**
 	 * To identify search Suggestions in the URI
@@ -76,18 +76,17 @@ public class AndrolifeProvider extends ContentProvider {
 			+ " VARCHAR(300) NOT NULL," + DatabaseColumn.DETAIL.stringValue + " VARCHAR(250) NOT NULL,"
 			+ DatabaseColumn.LEVELTYPE.stringValue + " VARCHAR(6) NOT NULL," + DatabaseColumn.CSA.stringValue
 			+ " VARCHAR(3) NOT NULL," + DatabaseColumn.URL.stringValue + " VARCHAR(150) NOT NULL,"
-			+ DatabaseColumn.SCREENSHOT.stringValue + " VARCHAR(250),"
-			+ DatabaseColumn.SCREENSHOT_EMISSION.stringValue + " VARCHAR(250),"
-			+ DatabaseColumn.TYPE.stringValue + " VARCHAR(40) NOT NULL,"
+			+ DatabaseColumn.SCREENSHOT.stringValue + " VARCHAR(250)," + DatabaseColumn.SCREENSHOT_EMISSION.stringValue
+			+ " VARCHAR(250)," + DatabaseColumn.TYPE.stringValue + " VARCHAR(40) NOT NULL,"
 			+ DatabaseColumn.PREMIERE_DIFFUSION.stringValue + " VARCHAR(1) NOT NULL,"
 			+ DatabaseColumn.ID_MASTERSHOW.stringValue + " VARCHAR(50) NOT NULL,"
 			+ DatabaseColumn.NolifeOnlineURL.stringValue + " VARCHAR(250),"
 			+ DatabaseColumn.NolifeOnlineStart.stringValue + " VARCHAR(35),"
 			+ DatabaseColumn.NolifeOnlineEnd.stringValue + " VARCHAR(35),"
 			+ DatabaseColumn.NolifeOnlineShowDate.stringValue + " VARCHAR(35),"
-			+ DatabaseColumn.SUGGEST_TOP.stringValue + " VARCHAR(200),"
-			+ SearchManager.SUGGEST_COLUMN_SHORTCUT_ID + " VARCHAR(5)," + SearchManager.SUGGEST_COLUMN_INTENT_DATA
-			+ " VARCHAR(50), " + DatabaseColumn.HD.stringValue + " VARCHAR(35)" + ")";
+			+ DatabaseColumn.SUGGEST_TOP.stringValue + " VARCHAR(200)," + SearchManager.SUGGEST_COLUMN_SHORTCUT_ID
+			+ " VARCHAR(5)," + SearchManager.SUGGEST_COLUMN_INTENT_DATA + " VARCHAR(50), "
+			+ DatabaseColumn.HD.stringValue + " VARCHAR(35)" + ")";
 
 	private static final UriMatcher sURIMatcher = buildUriMatcher();
 
@@ -118,20 +117,6 @@ public class AndrolifeProvider extends ContentProvider {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			if (oldVersion < SharedInformation.DATABASE_HD_VERSION
-					&& newVersion >= SharedInformation.DATABASE_HD_VERSION) {
-				db.execSQL("ALTER TABLE " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME + " ADD "
-						+ DatabaseColumn.HD.stringValue + " VARCHAR(35) default '0'");
-			}
-			if (oldVersion == SharedInformation.DATABASE_HD_VERSION) {
-				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
-				onCreate(db);
-			}
-			if (oldVersion < SharedInformation.DATABASE_NOCO_VERSION) {
-				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
-				onCreate(db);
-			}
-
 		}
 
 		@Override
@@ -149,7 +134,7 @@ public class AndrolifeProvider extends ContentProvider {
 		return true;
 	}
 
-	private static final String CONTENT_PROVIDER_PROGRAMMES_TYPE = "vnd.android.cursor.item/com.rsegismont.android.androLife.core.parameters.DatabaseColumn";
+	private static final String CONTENT_PROVIDER_PROGRAMMES_TYPE = "vnd.android.cursor.item/com.rsegismont.androlife.common.SharedInformation.DatabaseColumn";
 
 	@Override
 	public String getType(Uri uri) {
@@ -253,14 +238,5 @@ public class AndrolifeProvider extends ContentProvider {
 
 		}
 
-	}	db.execSQL("ALTER TABLE " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME + " ADD "
-						+ DatabaseColumn.HD.stringValue + " VARCHAR(35) default '0'");
-			}
-			if (oldVersion == SharedInformation.DATABASE_HD_VERSION) {
-				db.execSQL("DROP TABLE IF EXISTS " + SharedInformation.CONTENT_PROVIDER_PROGRAMME_TABLE_NAME);
-				onCreate(db);
-			}
-
-		}
-
+	}
 }

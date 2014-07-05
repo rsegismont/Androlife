@@ -41,9 +41,9 @@ import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
 import com.rsegismont.androlife.core.ui.SkeletonActivity;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
+import com.rsegismont.androlife.core.utils.AndrolifeViewFactory;
 import com.rsegismont.androlife.settings.SettingsActivity;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
-import com.rsegismont.androlife.utils.AndrolifeViewFactory;
 
 public class HomeProgrammesAdapter extends BaseAdapter {
 	private int height;

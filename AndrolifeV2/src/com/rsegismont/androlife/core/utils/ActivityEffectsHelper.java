@@ -21,7 +21,7 @@
  * 
  */
 
-package com.rsegismont.androlife.utils;
+package com.rsegismont.androlife.core.utils;
 
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.application.AndrolifeApplication;

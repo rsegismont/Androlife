@@ -27,7 +27,7 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 
 import com.actionbarsherlock.app.SherlockFragment;
-import com.rsegismont.androlife.utils.ActivityEffectsHelper;
+import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
 
 /**
  * Generic class for standard {@link Fragment}

@@ -50,7 +50,6 @@ import com.rsegismont.androlife.noqr.helper.CaptureActivityHandler;
 import com.rsegismont.androlife.noqr.helper.FinishListener;
 import com.rsegismont.androlife.noqr.helper.InactivityTimer;
 import com.rsegismont.androlife.noqr.helper.ViewfinderView;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
 
 public final class NoqrCaptureActivity extends SkeletonActivity implements SurfaceHolder.Callback, View.OnClickListener {
 
@@ -235,7 +234,7 @@ public final class NoqrCaptureActivity extends SkeletonActivity implements Surfa
 				final String barcode = this.barcodeTextview.getText().toString();
 				Intent intent;
 				if (barcode.contains(NOLIFE_ONLINE)) {
-					intent = SdkUtils.prepare_web(getApplicationContext(), AndrolifeUtils.getMobileUrl(barcode));
+					intent = SdkUtils.prepare_web(getApplicationContext(), barcode);
 					cameraSeeButton.setText(R.string.androlife_camera_see);
 				} else {
 					intent = SdkUtils.prepare_web(getApplicationContext(), barcode);

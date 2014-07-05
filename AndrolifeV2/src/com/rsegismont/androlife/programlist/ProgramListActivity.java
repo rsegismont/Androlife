@@ -34,9 +34,9 @@ import com.rsegismont.androlife.common.Constantes;
 import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 import com.rsegismont.androlife.details.DetailsAdapter;
 import com.rsegismont.androlife.home.HomeActivity;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
 
 public class ProgramListActivity extends ProgrammeAbstract implements LoaderManager.LoaderCallbacks<Cursor> {
 

@@ -8,13 +8,10 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class SharedInformation {
-	
+
 	/** Database version where HD attribute was added */
-	public static final int DATABASE_HD_VERSION = 7;
-	public static final int DATABASE_NOCO_VERSION = 9;
 
-
-	public static String AUTHORITY = "com.rsegismont.android.androLife.core.AndrolifeProvider";
+	public static String AUTHORITY = "com.rsegismont.androlife.core.database.AndrolifeProvider";
 
 	public static final String INTENT_DETAILS = "com.rsegismont.androlife.intent.action.DETAILS";
 
@@ -32,8 +29,6 @@ public class SharedInformation {
 	public static final String FULL_UPDATE = "FULL_UPDATE";
 
 	public static enum DatabaseColumn implements BaseColumns {
-		
-
 
 		ID("_id", 0), DATE("date", 1), DATE_UTC("dateUTC", 2), COLOR("color", 3), TITLE("title", 4), SUBTITLE(
 				"sub_title", 5), DESCRIPTION("description", 6), DETAIL(SearchManager.SUGGEST_COLUMN_TEXT_2, 7), LEVELTYPE(
@@ -41,21 +36,19 @@ public class SharedInformation {
 				"AdditionalScreenshot", 12), TYPE("type", 13), PREMIERE_DIFFUSION("premierediff", 14), ID_MASTERSHOW(
 				"id_mastershow", 15), NolifeOnlineURL("NolifeOnlineURL", 16), NolifeOnlineStart("NolifeOnlineStart", 17), NolifeOnlineEnd(
 				"NolifeOnlineEnd", 18), NolifeOnlineShowDate("NolifeOnlineShowDate", 19), NolifeOnlineExternalURL(
-				"Online_ExternalURL", 20), SUGGEST_TOP(SearchManager.SUGGEST_COLUMN_TEXT_1, 21),
-				HD("HD", 22);
+				"Online_ExternalURL", 20), SUGGEST_TOP(SearchManager.SUGGEST_COLUMN_TEXT_1, 21), HD("HD", 22);
 
 		public String stringValue;
 		public int columnPosition;
-		
 
 		DatabaseColumn(String noairValue, int columnPosition) {
 			this.stringValue = noairValue;
 			this.columnPosition = columnPosition;
 		}
-		
-		public static List<String> getList(){
+
+		public static List<String> getList() {
 			List<String> tmp = new LinkedList<String>();
-			for(DatabaseColumn column : values()){
+			for (DatabaseColumn column : values()) {
 				tmp.add(column.stringValue);
 			}
 			return tmp;

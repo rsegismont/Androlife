@@ -20,7 +20,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  * 
  */
-package com.rsegismont.androlife.utils;
+package com.rsegismont.androlife.core.utils;
 
 import android.content.ContentValues;
 import android.content.pm.PackageManager;

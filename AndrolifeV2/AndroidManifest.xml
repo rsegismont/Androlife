@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rsegismont.androlife"
     android:installLocation="preferExternal"
-    android:versionCode="17"
-    android:versionName="1.2.1 - Kiwi" >
+    android:versionCode="20"
+    android:versionName="1.2.2 - Kiwi" >
 
     <supports-screens
         android:anyDensity="true"
@@ -14,7 +14,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="20" />
 
     <uses-feature
         android:name="android.hardware.screen.portrait"
@@ -23,18 +23,34 @@
         android:name="android.hardware.screen.landscape"
         android:required="false" />
 
+    <permission
+        android:name="com.rsegismont.androlife.core.database.READ"
+        android:description="@string/app_name"
+        android:label="READ"
+        android:protectionLevel="signature" />
+    <permission
+        android:name="com.rsegismont.androlife.core.database.WRITE"
+        android:description="@string/app_name"
+        android:label="WRITE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" android:maxSdkVersion="13" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
-    <uses-permission android:name="com.rsegismont.android.androLife.core.READ" />
-    <uses-permission android:name="com.rsegismont.android.androLife.core.WRITE" />
+    <uses-permission
+        android:name="android.permission.WRITE_CALENDAR"
+        android:maxSdkVersion="13" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission android:name="com.rsegismont.androlife.core.database.READ" />
+    <uses-permission android:name="com.rsegismont.androlife.core.database.WRITE" />
 
     <application
         android:name="com.rsegismont.androlife.application.AndrolifeApplication"
         android:allowBackup="false"
-        android:hardwareAccelerated="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name_main"
         android:theme="@style/Androlife_Theme" >
@@ -118,6 +134,19 @@
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
         </activity>
+
+        <!-- Database -->
+
+        <provider
+            android:name="com.rsegismont.androlife.core.database.AndrolifeProvider"
+            android:authorities="com.rsegismont.androlife.core.database.AndrolifeProvider"
+            android:exported="true"
+            android:readPermission="com.rsegismont.androlife.core.database.READ"
+            android:writePermission="com.rsegismont.androlife.core.database.WRITE" >
+            <path-permission
+                android:pathPrefix="/search_suggest_query"
+                android:readPermission="android.permission.GLOBAL_SEARCH" />
+        </provider>
     </application>
 
 </manifest>

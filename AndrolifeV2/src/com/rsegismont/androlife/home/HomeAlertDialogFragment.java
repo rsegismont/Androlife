@@ -33,7 +33,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rsegismont.androlife.R;
-import com.rsegismont.androlife.common.SdkUtils;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 
 public class HomeAlertDialogFragment extends DialogFragment {
 	public static final String CANCEL = "cancel";
@@ -44,8 +44,7 @@ public class HomeAlertDialogFragment extends DialogFragment {
 
 	private void doNegativeClick() {
 		switch (this.title) {
-		case R.string.alert_dialog_hd_title:
-		case R.string.alert_dialog_market_title:
+		case R.string.alert_dialog_core_title:
 			this.andro.finish();
 		default:
 			return;
@@ -55,17 +54,17 @@ public class HomeAlertDialogFragment extends DialogFragment {
 
 	private void doPositiveClick() {
 		switch (this.title) {
+
+		case R.string.alert_dialog_core_title:
+			AndrolifeUtils.openAndrolifeCoreSettings(getActivity());
+			andro.finish();
+			return;
+
 		case R.string.alert_dialog_exit_title:
 			andro.finish();
 			return;
-		case R.string.alert_dialog_hd_title:
 		case R.string.alert_dialog_update_title:
 			andro.download();
-			return;
-		case R.string.alert_dialog_market_title:
-			startActivity(SdkUtils.prepare_web(andro,
-					"https://play.google.com/store/apps/details?id=com.rsegismont.android.androLife.core"));
-			this.andro.finish();
 			return;
 		}
 	}

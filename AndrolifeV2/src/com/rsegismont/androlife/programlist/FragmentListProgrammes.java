@@ -37,8 +37,8 @@ import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
 import com.rsegismont.androlife.core.ui.AndrolifeListFragment;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 import com.rsegismont.androlife.details.ProgrammesDetailActivity;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
 
 public class FragmentListProgrammes extends AndrolifeListFragment implements AdapterView.OnItemClickListener,
 		LoaderManager.LoaderCallbacks<Cursor> {

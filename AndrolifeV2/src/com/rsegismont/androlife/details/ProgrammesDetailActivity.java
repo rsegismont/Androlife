@@ -20,8 +20,8 @@ import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
 import com.rsegismont.androlife.common.api.AndrolifeApi9;
 import com.rsegismont.androlife.common.utils.Utils;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 import com.rsegismont.androlife.home.HomeActivity;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
 
 public class ProgrammesDetailActivity extends ProgrammeAbstract implements LoaderManager.LoaderCallbacks<Cursor> {
 

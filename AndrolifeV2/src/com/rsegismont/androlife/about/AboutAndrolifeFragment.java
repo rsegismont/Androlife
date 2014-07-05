@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.core.ui.AndrolifeFragment;
-import com.rsegismont.androlife.utils.AndrolifeViewFactory;
+import com.rsegismont.androlife.core.utils.AndrolifeViewFactory;
 
 public class AboutAndrolifeFragment extends AndrolifeFragment {
 

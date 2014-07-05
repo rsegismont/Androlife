@@ -36,8 +36,8 @@ import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.core.ui.SkeletonActivity;
-import com.rsegismont.androlife.utils.AndrolifeUtils;
-import com.rsegismont.androlife.utils.AndrolifeViewFactory;
+import com.rsegismont.androlife.core.utils.AndrolifeUtils;
+import com.rsegismont.androlife.core.utils.AndrolifeViewFactory;
 
 /**
  * Adapter of Program list

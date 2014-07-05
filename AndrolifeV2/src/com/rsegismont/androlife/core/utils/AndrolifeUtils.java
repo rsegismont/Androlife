@@ -21,7 +21,7 @@
  * 
  */
 
-package com.rsegismont.androlife.utils;
+package com.rsegismont.androlife.core.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -50,7 +50,9 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.protocol.HttpContext;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -68,14 +70,15 @@ import com.rsegismont.androlife.common.Constantes;
 import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
+import com.rsegismont.androlife.common.api.AndrolifeApi9;
 
 public class AndrolifeUtils {
 
 	private static final String ENCODING_GZIP = "gzip";
 	private static final String HEADER_ACCEPT_ENCODING = "Accept-Encoding";
-	public static final String androlifeCore = "com.rsegismont.android.androLife.core";
-	private static final String HD_BUG = "HD_BUG";
+
 	public static long timeToConfirm = 0;
+	public static final String androlifeCore = "com.rsegismont.android.androLife.core";
 
 	public static boolean checkExternalDispose() {
 		boolean mExternalStorageAvailable = false;
@@ -97,6 +100,28 @@ public class AndrolifeUtils {
 		SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat(paramString, Locale.FRANCE);
 		localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("Europe/Paris"));
 		return localSimpleDateFormat.format(paramDate);
+	}
+
+	public static void openAndrolifeCoreSettings(Context context) {
+		if (Build.VERSION.SDK_INT >= 9) {
+			try {
+				// Open the specific App Info page:
+				final Intent intent = AndrolifeApi9.getSettingsIntent();
+				intent.setData(Uri.parse("package:" + androlifeCore));
+				context.startActivity(intent);
+
+			} catch (ActivityNotFoundException e) {
+				// e.printStackTrace();
+				Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
+				context.startActivity(intent);
+
+			}
+		} else {
+			Intent intent = new Intent(android.provider.Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
+			context.startActivity(intent);
+
+		}
+
 	}
 
 	public static Object fetch(String address) {
@@ -330,10 +355,6 @@ public class AndrolifeUtils {
 			long candidateDate = urlConnection.getLastModified();
 			final SharedPreferences prefsManager = PreferenceManager.getDefaultSharedPreferences(context
 					.getApplicationContext());
-			if (prefsManager.getBoolean(HD_BUG, true) == false) {
-				prefsManager.edit().putBoolean(HD_BUG, true).commit();
-				return true;
-			}
 
 			final long savedDate = prefsManager.getLong(stringUrl, 0);
 
@@ -387,11 +408,6 @@ public class AndrolifeUtils {
 		} else {
 			return getInputStreamFromUrl_V9(context, url);
 		}
-	}
-
-	public static String getMobileUrl(String paramString) {
-		return "http://mobile.nolife-tv.com/online/#/online/emission-"
-				+ paramString.substring(1 + paramString.lastIndexOf("-"));
 	}
 
 	public static long getTonightIndex(Cursor mCursor) {
@@ -476,7 +492,6 @@ public class AndrolifeUtils {
 		}
 		return false;
 	}
-
 
 	public static boolean isUpdateAvailable(Context paramContext, String paramString) {
 		try {
