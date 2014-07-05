@@ -57,7 +57,6 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 			SharedInformation.DatabaseColumn.NolifeOnlineEnd.stringValue,
 			SharedInformation.DatabaseColumn.NolifeOnlineURL.stringValue,
 			SharedInformation.DatabaseColumn.NolifeOnlineShowDate.stringValue,
-			SharedInformation.DatabaseColumn.NolifeOnlineExternalURL.stringValue,
 			SharedInformation.DatabaseColumn.HD.stringValue, SharedInformation.DatabaseColumn.CSA.stringValue,
 			SharedInformation.DatabaseColumn.COLOR.stringValue, SharedInformation.DatabaseColumn.DETAIL.stringValue,
 			SharedInformation.DatabaseColumn.TYPE.stringValue, SharedInformation.DatabaseColumn.URL.stringValue,

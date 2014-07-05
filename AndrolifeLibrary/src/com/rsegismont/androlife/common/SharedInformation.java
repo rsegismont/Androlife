@@ -30,20 +30,52 @@ public class SharedInformation {
 
 	public static enum DatabaseColumn implements BaseColumns {
 
-		ID("_id", 0), DATE("date", 1), DATE_UTC("dateUTC", 2), COLOR("color", 3), TITLE("title", 4), SUBTITLE(
-				"sub_title", 5), DESCRIPTION("description", 6), DETAIL(SearchManager.SUGGEST_COLUMN_TEXT_2, 7), LEVELTYPE(
-				"leveltype", 8), CSA("csa", 9), URL("url", 10), SCREENSHOT("screenshot", 11), SCREENSHOT_EMISSION(
-				"AdditionalScreenshot", 12), TYPE("type", 13), PREMIERE_DIFFUSION("premierediff", 14), ID_MASTERSHOW(
-				"id_mastershow", 15), NolifeOnlineURL("NolifeOnlineURL", 16), NolifeOnlineStart("NolifeOnlineStart", 17), NolifeOnlineEnd(
-				"NolifeOnlineEnd", 18), NolifeOnlineShowDate("NolifeOnlineShowDate", 19), NolifeOnlineExternalURL(
-				"Online_ExternalURL", 20), SUGGEST_TOP(SearchManager.SUGGEST_COLUMN_TEXT_1, 21), HD("HD", 22);
+		ID("_id"),
+		/** */
+		DATE("date"),
+		/** */
+		DATE_UTC("dateUTC"),
+		/** */
+		COLOR("color"),
+		/** */
+		TITLE("title"),
+		/** */
+		SUBTITLE("sub_title"),
+		/** */
+		DESCRIPTION("description"),
+		/** */
+		DETAIL(SearchManager.SUGGEST_COLUMN_TEXT_2),
+		/** */
+		LEVELTYPE("leveltype"),
+		/** */
+		CSA("csa"),
+		/** */
+		URL("url"),
+		/** */
+		SCREENSHOT("screenshot"),
+		/** */
+		SCREENSHOT_EMISSION("AdditionalScreenshot"),
+		/** */
+		TYPE("type"), PREMIERE_DIFFUSION("premierediff"),
+		/** */
+		ID_MASTERSHOW("id_mastershow"),
+		/** */
+		NolifeOnlineURL("NolifeOnlineURL"),
+		/** */
+		NolifeOnlineStart("NolifeOnlineStart"),
+		/** */
+		NolifeOnlineEnd("NolifeOnlineEnd"),
+		/** */
+		NolifeOnlineShowDate("NolifeOnlineShowDate"),
+		/** */
+		SUGGEST_TOP(SearchManager.SUGGEST_COLUMN_TEXT_1),
+		/** */
+		HD("HD");
 
 		public String stringValue;
-		public int columnPosition;
 
-		DatabaseColumn(String noairValue, int columnPosition) {
+		DatabaseColumn(String noairValue) {
 			this.stringValue = noairValue;
-			this.columnPosition = columnPosition;
 		}
 
 		public static List<String> getList() {
