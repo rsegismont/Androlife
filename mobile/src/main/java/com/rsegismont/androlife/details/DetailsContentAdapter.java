@@ -1,7 +1,5 @@
 package com.rsegismont.androlife.details;
 
-import java.util.Date;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.util.SparseArray;
@@ -15,6 +13,8 @@ import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.activities.ProgrammeAbstract;
 import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
+
+import java.util.Date;
 
 public class DetailsContentAdapter extends BaseAdapter {
 	private int count;
@@ -32,14 +32,14 @@ public class DetailsContentAdapter extends BaseAdapter {
 		this.contentList = new SparseArray<String>();
 		this.count = 0;
 
-		addToAdapter("DŽtails", paramContentValues.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
+		addToAdapter("DÃ©tails", paramContentValues.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
 		String str;
 		if (paramDate != null) {
 			str = paramActivity.detailsHeaderDateFormat.format(paramDate);
 			if (paramBoolean) {
-				addToAdapter("Nolife Online", "Disponible depuis le " + str);
+				addToAdapter("Noco", "Disponible depuis le " + str);
 			} else {
-				addToAdapter("Nolife Online", "Sera disponible ˆ partir du " + str);
+				addToAdapter("Noco", "Sera disponible Ã  partir du " + str);
 			}
 		}
 

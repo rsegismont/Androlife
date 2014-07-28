@@ -51,7 +51,7 @@
     <string name="subtitle_query">Ma recherche</string>
     <string name="search_label">Androlife</string>
     <string name="search_hint">Rechercher un programme</string>
-    <string name="programme_play">Regarder sur Nolife Online</string>
+    <string name="programme_play">Regarder sur Noco</string>
     <string name="programme_register_calendar">Ajouter à mon agenda</string>
     <string name="programme_discuss_forum">En discuter sur le forum</string>
 
@@ -93,7 +93,7 @@
     <string name="menu_refresh">Mettre à jour</string>
     <string name="button_ok">OK</string>
     <string name="androlife_camera_detail">Voir la fiche</string>
-    <string name="androlife_camera_see">Regarder sur Nolife Online</string>
+    <string name="androlife_camera_see">Regarder sur Noco</string>
     <string name="androlife_camera_see_normal">Voir ce site</string>
     <string name="androlife_camera_scananother">Scanner un autre QR</string>
     <string name="menu_settings">Paramètres</string>
