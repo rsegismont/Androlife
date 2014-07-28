@@ -46,7 +46,7 @@ import android.support.v4.util.LruCache;
 import android.util.Log;
 
 import com.jakewharton.disklrucache.DiskLruCache;
-import com.rsegismont.androlife.common.BuildConfig;
+import com.rsegismont.androlife.BuildConfig;
 import com.rsegismont.androlife.common.api.AndrolifeApi19;
 import com.rsegismont.androlife.common.utils.ImageCacher.ImageCacheParams;
 

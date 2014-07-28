@@ -2,6 +2,8 @@ package com.rsegismont.androlife.common;
 
 import android.util.Log;
 
+import com.rsegismont.androlife.BuildConfig;
+
 public class MyLog {
 
 	public static void log(Object object, String detail) {

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <dimen name="widget_margin">0dp</dimen>
-    <dimen name="gallery_spacing">6dp</dimen>
-    <dimen name="gallery_height">120dp</dimen>
-    <dimen name="gallery_width">213dp</dimen>
-
-</resources>

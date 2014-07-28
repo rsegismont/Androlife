@@ -36,7 +36,7 @@ import android.os.Build;
 import android.util.Log;
 
 import com.jakewharton.disklrucache.DiskLruCache;
-import com.rsegismont.androlife.common.BuildConfig;
+import com.rsegismont.androlife.BuildConfig;
 
 /**
  * A simple subclass of {@link ImageResizer} that fetches and resizes images fetched from a URL.

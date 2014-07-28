@@ -33,7 +33,7 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.rsegismont.androlife.common.BuildConfig;
+import com.rsegismont.androlife.BuildConfig;
 
 /**
  * This class wraps up completing some arbitrary long running work when loading a bitmap to an ImageView. It handles

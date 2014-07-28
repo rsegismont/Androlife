@@ -26,7 +26,7 @@ import android.graphics.Point;
 import android.os.Build;
 import android.util.Log;
 
-import com.rsegismont.androlife.common.BuildConfig;
+import com.rsegismont.androlife.BuildConfig;
 
 /**
  * A simple subclass of {@link ImageWorker} that resizes images from resources
