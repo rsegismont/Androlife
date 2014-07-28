@@ -2,6 +2,8 @@
 <resources>
 
     <!-- Programs Color -->
+        <color name="pressed_androlife">#CC8F0C09</color>
+    <color name="actionbar_pressed_androlife">#CC550B09</color>
     <color name="androlife_programs_hint_text">#2d2d2d</color>
     <color name="androlife_programs_hint_underline">#b2312e</color>
 
