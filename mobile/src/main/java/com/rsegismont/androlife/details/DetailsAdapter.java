@@ -16,7 +16,7 @@ import com.rsegismont.androlife.common.SharedInformation;
 public class DetailsAdapter extends FragmentStatePagerAdapter implements OnPageChangeListener {
 
 	/**
-	 * Listener for creation/destruction of fragment in {@link HomeFragmentAdapter}
+	 * Listener for creation/destruction of fragment in {@link com.rsegismont.androlife.home.HomeProgrammesAdapter}
 	 * 
 	 * @author Romain Segismont
 	 * @version 1.0

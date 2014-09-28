@@ -26,7 +26,6 @@ package com.rsegismont.androlife.core.ui;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
-import com.actionbarsherlock.app.SherlockFragment;
 import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
 
 /**
@@ -37,7 +36,7 @@ import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
  * @since 1.0
  * 
  */
-public class AndrolifeFragment extends SherlockFragment {
+public class AndrolifeFragment extends Fragment {
 	public SkeletonActivity getAndrolifeActivity() {
 		return (SkeletonActivity) getActivity();
 	}

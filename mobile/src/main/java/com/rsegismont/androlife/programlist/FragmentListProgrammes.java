@@ -16,8 +16,6 @@
 
 package com.rsegismont.androlife.programlist;
 
-import java.util.Calendar;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,12 +23,12 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.common.Constantes;
 import com.rsegismont.androlife.common.SdkUtils;
@@ -39,6 +37,8 @@ import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
 import com.rsegismont.androlife.core.ui.AndrolifeListFragment;
 import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 import com.rsegismont.androlife.details.ProgrammesDetailActivity;
+
+import java.util.Calendar;
 
 public class FragmentListProgrammes extends AndrolifeListFragment implements AdapterView.OnItemClickListener,
 		LoaderManager.LoaderCallbacks<Cursor> {

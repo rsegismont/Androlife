@@ -134,7 +134,7 @@
         <activity
             android:name="com.rsegismont.androlife.settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:theme="@style/Theme.Sherlock.Light.DarkActionBar" >
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar" >
         </activity>
 
         <!-- Database -->

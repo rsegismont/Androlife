@@ -1,23 +1,22 @@
 package com.rsegismont.androlife.about;
 
+import android.app.ActionBar;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.core.ui.SkeletonActivity;
@@ -68,7 +67,7 @@ public class AboutActivity extends SkeletonActivity implements ActionBar.TabList
 		screenDimensions = getScreenDimension(this);
 
 		setContentView(R.layout.androlife_about_activity);
-		final ActionBar localActionBar = getSupportActionBar();
+		final ActionBar localActionBar = getActionBar();
 		localActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 		localActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		this.mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -88,7 +87,7 @@ public class AboutActivity extends SkeletonActivity implements ActionBar.TabList
 	}
 
 	public boolean onCreateOptionsMenu(Menu paramMenu) {
-		getSupportMenuInflater().inflate(R.menu.about, paramMenu);
+		getMenuInflater().inflate(R.menu.about, paramMenu);
 		return true;
 	}
 
@@ -105,17 +104,22 @@ public class AboutActivity extends SkeletonActivity implements ActionBar.TabList
 		}
 	}
 
-	public void onTabReselected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction) {
-	}
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+        this.mViewPager.setCurrentItem(tab.getPosition());
+    }
 
-	public void onTabSelected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction) {
-		this.mViewPager.setCurrentItem(paramTab.getPosition());
-	}
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
 
-	public void onTabUnselected(ActionBar.Tab paramTab, FragmentTransaction paramFragmentTransaction) {
-	}
+    }
 
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
+
+    }
+
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
 		public SectionsPagerAdapter(FragmentManager arg2) {
 			super(arg2);
 		}

@@ -1,10 +1,7 @@
 package com.rsegismont.androlife.settings;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
@@ -18,10 +15,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockPreferenceActivity;
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.application.AndrolifeApplication;
 import com.rsegismont.androlife.common.SdkUtils;
@@ -30,7 +25,11 @@ import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
 import com.rsegismont.androlife.core.utils.ActivityEffectsHelper.EffectListener;
 import com.rsegismont.androlife.home.HomeActivity;
 
-public class SettingsActivity extends SherlockPreferenceActivity implements
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class SettingsActivity extends PreferenceActivity implements
 		SharedPreferences.OnSharedPreferenceChangeListener, EffectListener {
 
 	public static final String FILTERS_CLIP = "settings_filters_clip";
@@ -161,8 +160,8 @@ public class SettingsActivity extends SherlockPreferenceActivity implements
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		this.preferencesList = new ArrayList<String>();
-		getSupportActionBar().setHomeButtonEnabled(true);
-		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
+		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
 	}
 

@@ -19,64 +19,64 @@
 
 <resources>
 
-    <style name="Theme.Androlife" parent="@style/Theme.Sherlock.Light.DarkActionBar">
-        <item name="actionBarItemBackground">@drawable/selectable_background_androlife</item>
-        <item name="popupMenuStyle">@style/PopupMenu.Androlife</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Androlife</item>
-        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Androlife</item>
-        <item name="actionDropDownStyle">@style/DropDownNav.Androlife</item>
-        <item name="actionBarStyle">@style/ActionBar.Solid.Androlife</item>
-        <item name="actionModeBackground">@drawable/cab_background_top_androlife</item>
-        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_androlife</item>
-        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Androlife</item>
+    <style name="Theme.Androlife" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_androlife</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Androlife</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Androlife</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Androlife</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Androlife</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Androlife</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_androlife</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_androlife</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Androlife</item>
 
                 <!-- Light.DarkActionBar specific -->
-        <item name="actionBarWidgetTheme">@style/Theme.Androlife.Widget</item>
+        <item name="android:actionBarWidgetTheme">@style/Theme.Androlife.Widget</item>
 
     </style>
 
-    <style name="ActionBar.Solid.Androlife" parent="@style/Widget.Sherlock.Light.ActionBar.Solid.Inverse">
-        <item name="background">@drawable/ab_solid_androlife</item>
-        <item name="backgroundStacked">@drawable/ab_stacked_solid_androlife</item>
-        <item name="backgroundSplit">@drawable/ab_bottom_solid_androlife</item>
-        <item name="progressBarStyle">@style/ProgressBar.Androlife</item>
+    <style name="ActionBar.Solid.Androlife" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_androlife</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_androlife</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_androlife</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Androlife</item>
     </style>
 
-    <style name="ActionBar.Transparent.Androlife" parent="@style/Widget.Sherlock.ActionBar">
-        <item name="background">@drawable/ab_transparent_androlife</item>
-        <item name="progressBarStyle">@style/ProgressBar.Androlife</item>
+    <style name="ActionBar.Transparent.Androlife" parent="@android:Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_androlife</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Androlife</item>
     </style>
 	
-    <style name="PopupMenu.Androlife" parent="@style/Widget.Sherlock.ListPopupWindow">	
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_androlife</item>	
+    <style name="PopupMenu.Androlife" parent="@android:Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_androlife</item>
     </style>
-	
-    <style name="DropDownListView.Androlife" parent="@style/Widget.Sherlock.ListView.DropDown">
+
+    <style name="DropDownListView.Androlife" parent="@android:Widget.Holo.ListView.DropDown">
         <item name="android:listSelector">@drawable/actionbar_selectable_background_androlife</item>
     </style>
 
-    <style name="ActionBarTabStyle.Androlife" parent="@style/Widget.Sherlock.ActionBar.TabView">
+    <style name="ActionBarTabStyle.Androlife" parent="@android:Widget.Holo.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_androlife</item>
     </style>
 	
-    <style name="DropDownNav.Androlife" parent="@style/Widget.Sherlock.Spinner.DropDown.ActionBar">
+    <style name="DropDownNav.Androlife" parent="@android:style/Widget.Holo.Spinner">
         <item name="android:background">@drawable/spinner_background_ab_androlife</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_androlife</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_androlife</item>
     </style>
     
-    <style name="ProgressBar.Androlife" parent="@style/Widget.Sherlock.ProgressBar.Horizontal">
+    <style name="ProgressBar.Androlife" parent="@android:Widget.Holo.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_androlife</item>
     </style>
     
-    <style name="ActionButton.CloseMode.Androlife" parent="@style/Widget.Sherlock.ActionButton.CloseMode">
+    <style name="ActionButton.CloseMode.Androlife" parent="@android:Widget.Holo.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_androlife</item>
     </style>
     
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Androlife.Widget" parent="@style/Theme.Sherlock">
-        <item name="popupMenuStyle">@style/PopupMenu.Androlife</item>
-        <item name="dropDownListViewStyle">@style/DropDownListView.Androlife</item>
+    <style name="Theme.Androlife.Widget" parent="@android:Widget.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Androlife</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Androlife</item>
     </style>
 
 </resources>

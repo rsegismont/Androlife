@@ -23,26 +23,26 @@
 
 package com.rsegismont.androlife.calendar;
 
-import java.util.LinkedList;
-import java.util.List;
-
+import android.app.ActionBar;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.core.ui.SkeletonActivity;
 import com.rsegismont.androlife.home.HomeActivity;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class that will display a confirmation screen on devices before ICS ( because we're using private apis to insert
@@ -87,8 +87,8 @@ public class AgendaActivity extends SkeletonActivity implements View.OnClickList
 		super.onCreate(paramBundle);
 		setContentView(R.layout.agenda_activity);
 
-		getSupportActionBar().setSubtitle(R.string.androlife_agenda_subtitle);
-		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
+		getActionBar().setSubtitle(R.string.androlife_agenda_subtitle);
+		getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
 		this.title = getIntent().getStringExtra(CalendarCompat.TITLE);
 		this.description = getIntent().getStringExtra(CalendarCompat.DESCRIPTION);

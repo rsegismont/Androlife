@@ -23,9 +23,6 @@
 
 package com.rsegismont.androlife.core.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -33,12 +30,12 @@ import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.application.AndrolifeApplication;
 import com.rsegismont.androlife.common.SdkUtils;
@@ -49,6 +46,9 @@ import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
 import com.rsegismont.androlife.core.utils.ActivityEffectsHelper.EffectListener;
 import com.rsegismont.androlife.settings.SettingsActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Base class for all Androlife Activities
  * 
@@ -57,7 +57,7 @@ import com.rsegismont.androlife.settings.SettingsActivity;
  * @since 1.0
  * 
  */
-public abstract class SkeletonActivity extends SherlockFragmentActivity implements EffectListener {
+public abstract class SkeletonActivity extends FragmentActivity implements EffectListener {
 	protected AndrolifeApplication androlifeApplication;
 	protected int height = 0;
 	protected int width = 0;
@@ -119,7 +119,8 @@ public abstract class SkeletonActivity extends SherlockFragmentActivity implemen
 
 		setupDimensions();
 
-		setRequestedOrientation(getActivityOrientation());
+        //noinspection ResourceType
+        setRequestedOrientation(getActivityOrientation());
 		this.androlifeApplication = ((AndrolifeApplication) getApplication());
 		androlifeApplication.destroyCpt = (1 + androlifeApplication.destroyCpt);
 
@@ -149,7 +150,7 @@ public abstract class SkeletonActivity extends SherlockFragmentActivity implemen
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		final MenuInflater inflater = getSupportMenuInflater();
+		final MenuInflater inflater = getMenuInflater();
 		for (int menuId : getInflatedMenus()) {
 			inflater.inflate(menuId, menu);
 		}

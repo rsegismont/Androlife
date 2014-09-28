@@ -60,7 +60,7 @@
 
     <!-- NoQr Theme -->
 
-    <style name="Androlife_Noqr_Theme_Camera" parent="@style/Theme.Sherlock.Light.NoActionBar" />
+    <style name="Androlife_Noqr_Theme_Camera" parent="@android:Theme.Holo.Light.NoActionBar" />
 
     <style name="Buttonandrolife_camera_button_theme" parent="@android:style/Widget.Button">
         <item name="android:textColor">#ff000000</item>
@@ -70,7 +70,7 @@
 
     <style name="ImageButtonandrolife_camera_button_theme" parent="@android:style/Widget.ImageButton"></style>
 
-    <style name="androlife_camera_button_theme" parent="@style/Theme.Sherlock.Light.DarkActionBar">
+    <style name="androlife_camera_button_theme" parent="@android:Theme.Holo.Light.DarkActionBar">
         <item name="android:buttonStyle">@style/Buttonandrolife_camera_button_theme</item>
         <item name="android:imageButtonStyle">@style/ImageButtonandrolife_camera_button_theme</item>
     </style>

@@ -1,5 +1,6 @@
 package com.rsegismont.androlife.details;
 
+import android.app.ActionBar;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -8,9 +9,8 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.view.MenuItem;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.activities.ProgrammeAbstract;
 import com.rsegismont.androlife.common.Constantes;
@@ -102,7 +102,7 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
 		super.onCreate(paramBundle);
 		final int type = getIntent().getIntExtra(Constantes.TYPE, Constantes.CURSOR_FULL);
 		getSupportLoaderManager().initLoader(type, null, this);
-		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
+		getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
 		setContentView(R.layout.host_activity);
 		setTitle(getResources().getString(R.string.app_name));
@@ -110,16 +110,16 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
 		switch (type) {
 
 		case Constantes.CURSOR_FULL:
-			getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
+			getActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
 			break;
 		case Constantes.CURSOR_QUERY:
-			getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_query));
+			getActionBar().setSubtitle(getResources().getString(R.string.subtitle_query));
 			break;
 		case Constantes.CURSOR_NEWS:
-			getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_news));
+			getActionBar().setSubtitle(getResources().getString(R.string.subtitle_news));
 			break;
 		case Constantes.CURSOR_SELECTION:
-			getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_selection));
+			getActionBar().setSubtitle(getResources().getString(R.string.subtitle_selection));
 			break;
 		default:
 			break;

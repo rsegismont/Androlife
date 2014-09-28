@@ -23,9 +23,6 @@
 
 package com.rsegismont.androlife.home;
 
-import java.util.Calendar;
-import java.util.List;
-
 import android.content.ContentResolver;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -40,16 +37,19 @@ import android.support.v4.content.Loader;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.common.SdkUtils;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.core.download.DownloadXmlNolifeTask;
 import com.rsegismont.androlife.core.ui.SwipeActivity;
 import com.rsegismont.androlife.core.utils.AndrolifeUtils;
+
+import java.util.Calendar;
+import java.util.List;
 
 public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 	private static final String PREFIX_TAG_PROGRAMMES = "prefix_programmes";
@@ -140,12 +140,12 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 		View leftDrawer;
 
 		if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			getSupportActionBar().setHomeButtonEnabled(true);
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+			getActionBar().setHomeButtonEnabled(true);
 		}
 
 		if ((orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) || (!isTablet)) {
-			getSupportActionBar().setSubtitle(R.string.home_menu_closed);
+			getActionBar().setSubtitle(R.string.home_menu_closed);
 			leftDrawer = findViewById(R.id.left_drawer);
 
 			if (isTablet) {
@@ -171,10 +171,10 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 				public void onDrawerSlide(View arg0, float arg1) {
 					if ((arg1 >= 0.5f) && (this.progressState == 0)) {
 						this.progressState = 1;
-						getSupportActionBar().setSubtitle(R.string.home_menu_open);
+						getActionBar().setSubtitle(R.string.home_menu_open);
 					} else if ((arg1 < 0.5f) && (this.progressState == 1)) {
 						this.progressState = 0;
-						getSupportActionBar().setSubtitle(R.string.home_menu_closed);
+						getActionBar().setSubtitle(R.string.home_menu_closed);
 					}
 				}
 

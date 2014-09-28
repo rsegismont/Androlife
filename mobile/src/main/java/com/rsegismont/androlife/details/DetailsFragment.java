@@ -1,8 +1,5 @@
 package com.rsegismont.androlife.details;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -14,15 +11,15 @@ import android.support.v4.content.Loader;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.activities.ProgrammeAbstract;
 import com.rsegismont.androlife.application.AndrolifeApplication;
@@ -33,6 +30,9 @@ import com.rsegismont.androlife.common.SharedInformation.DatabaseColumn;
 import com.rsegismont.androlife.core.ui.AndrolifeFragment;
 import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 import com.rsegismont.androlife.core.utils.AndrolifeViewFactory;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DetailsFragment extends AndrolifeFragment implements LoaderCallbacks<Cursor> {
 	public static final String CURSOR = "cursor";
