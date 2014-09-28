@@ -2,17 +2,18 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 20
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
         applicationId "com.rsegismont.androlife"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 20
         versionCode 23
         versionName "1.2.4 - Kiwi"
     }
     buildTypes {
         release {
+            zipAlign true
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

@@ -84,7 +84,7 @@ public class ProgramListAdapter extends CursorAdapter {
 			holder.colorImage = (ImageView) convertView.findViewById(R.id.list_programmes_color);
 			holder.content = (TextView) convertView.findViewById(R.id.list_programmes_data);
 			holder.content2 = (TextView) convertView.findViewById(R.id.list_programmes_data2);
-			SdkUtils.setTextViewRoboto(holder.content, "Roboto-BoldCondensed");
+			SdkUtils.setTextViewRoboto(holder.content, "RobotoCondensed-Bold");
 			convertView.setTag(holder);
 		}
 

@@ -23,8 +23,6 @@
 
 package com.rsegismont.androlife.home;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +32,8 @@ import android.widget.TextView;
 
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.common.SdkUtils;
+
+import java.util.List;
 
 public class MenuAdapter extends BaseAdapter {
 

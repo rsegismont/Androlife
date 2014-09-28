@@ -1,7 +1,5 @@
 package com.rsegismont.androlife.details;
 
-import java.util.Calendar;
-
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -23,7 +21,10 @@ import com.rsegismont.androlife.common.utils.Utils;
 import com.rsegismont.androlife.core.utils.AndrolifeUtils;
 import com.rsegismont.androlife.home.HomeActivity;
 
+import java.util.Calendar;
+
 public class ProgrammesDetailActivity extends ProgrammeAbstract implements LoaderManager.LoaderCallbacks<Cursor> {
+
 
 	@Override
 	public int getActivityOrientation() {
