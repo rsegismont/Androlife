@@ -4,6 +4,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
+    <ImageView
+        android:id="@+id/androlife_detail_image"
+        style="@style/Androlife_Details_Image"
+        android:src="@drawable/toutsuite" />
+
     <LinearLayout
         style="@style/Androlife_Details_Top_Container"
         android:layout_margin="@dimen/common_margin_vertical" >
@@ -11,7 +16,8 @@
         <LinearLayout
             style="@style/Androlife_Details_Title_Container"
             android:orientation="vertical" >
-            <TextView
+
+            <TextView
                 android:id="@+id/androlife_detail_title"
                 style="@style/Androlife_Details_Title"
                 android:text="Titre" />
@@ -52,17 +58,5 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/Androlife_Details_Image_Container"
-        android:layout_marginBottom="@dimen/common_margin_vertical"
-        android:layout_marginLeft="@dimen/common_margin_vertical"
-        android:layout_marginRight="@dimen/common_margin_vertical"
-        android:orientation="vertical" >
-
-        <ImageView
-            android:id="@+id/androlife_detail_image"
-            style="@style/Androlife_Details_Image"
-            android:src="@drawable/toutsuite" />
-    </LinearLayout>
 
 </LinearLayout>
