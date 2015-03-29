@@ -5,16 +5,7 @@
     android:versionCode="23"
     android:versionName="1.2.4 - Kiwi" >
 
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:smallScreens="true"
-        android:xlargeScreens="true" />
 
-    <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="20" />
 
     <uses-feature
         android:name="android.hardware.screen.portrait"
@@ -68,17 +59,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Camera -->
-
-        <activity
-            android:name="com.rsegismont.androlife.noqr.NoqrCaptureActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleTop"
-            android:screenOrientation="landscape"
-            android:theme="@style/Androlife_Noqr_Theme_Camera"
-            android:windowSoftInputMode="stateAlwaysHidden" >
         </activity>
 
         <!-- Others -->

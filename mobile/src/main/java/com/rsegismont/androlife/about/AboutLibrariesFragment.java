@@ -23,8 +23,6 @@ public class AboutLibrariesFragment extends AndrolifeFragment {
 
 		linearContainer.addView(AboutActivity.generateLibraryView(inflater, linearContainer, R.drawable.actionbarsherlock,
 				R.string.androlife_about_actionbarsherlock_title, R.string.androlife_about_actionbarsherlock_content));
-		linearContainer.addView(AboutActivity.generateLibraryView(inflater, linearContainer, R.drawable.zxing,
-				R.string.androlife_about_zxing_title, R.string.androlife_about_zxing_content));
 		linearContainer.addView(AboutActivity.generateLibraryView(inflater, linearContainer, R.drawable.disklrucache,
 				R.string.androlife_about_disklrucache_title, R.string.androlife_about_disklrucache_content));
 

@@ -35,6 +35,7 @@ import com.rsegismont.androlife.application.AndrolifeApplication;
 import com.rsegismont.androlife.common.SharedInformation;
 import com.rsegismont.androlife.core.ui.SkeletonActivity;
 import com.rsegismont.androlife.settings.SettingsActivity;
+import com.squareup.picasso.Picasso;
 
 /**
  * Utilit class used to store common task (such as image loading)
@@ -135,9 +136,7 @@ public class AndrolifeViewFactory {
 
 	/**
 	 * Display an image into an {@link ImageView}
-	 * 
-	 * @param activity
-	 *            current {@link SkeletonActivity}
+	 *
 	 * @param firstImage
 	 *            the first image to test and display if not null
 	 * @param secondImage
@@ -153,15 +152,15 @@ public class AndrolifeViewFactory {
 
 		try {
 			if (TextUtils.isEmpty(firstImage) == false) {
-				AndrolifeApplication.instance.mImageDownloader.loadImage(firstImage, imageView, width, height);
+				//AndrolifeApplication.instance.mImageDownloader.loadImage(firstImage, imageView, width, height);
 
-				// Picasso.with(imageView.getContext()).load(firstImage).placeholder(R.drawable.toutsuite).resize(width,
-				// height).centerInside().into(imageView);
+				Picasso.with(imageView.getContext()).load(firstImage).placeholder(R.drawable.toutsuite).resize(width,
+				 height).centerInside().into(imageView);
 			} else {
 				if (TextUtils.isEmpty(secondImage) == false) {
-					// Picasso.with(imageView.getContext()).load(secondImage).placeholder(R.drawable.toutsuite).resize(width,
-					// height).centerInside().into(imageView);
-					AndrolifeApplication.instance.mImageDownloader.loadImage(secondImage, imageView, width, height);
+					Picasso.with(imageView.getContext()).load(secondImage).placeholder(R.drawable.toutsuite).resize(width,
+					 height).centerInside().into(imageView);
+					//AndrolifeApplication.instance.mImageDownloader.loadImage(secondImage, imageView, width, height);
 				} else {
 					loadDefaultImage(imageView, width, height);
 				}
@@ -173,14 +172,11 @@ public class AndrolifeViewFactory {
 	}
 
 	private static void loadDefaultImage(ImageView imageView, int width, int height) {
-		// Picasso.with(imageView.getContext()).load(R.drawable.toutsuite).placeholder(R.drawable.toutsuite).fit().into(imageView);
-		AndrolifeApplication.instance.mImageDownloader.loadImage(R.drawable.toutsuite, imageView, width, height);
+		 Picasso.with(imageView.getContext()).load(R.drawable.toutsuite).placeholder(R.drawable.toutsuite).fit().into(imageView);
 	}
 
 	/**
-	 * 
-	 * @param activity
-	 *            current {@link SkeletonActivity}
+	 *
 	 * @param imageView
 	 *            the {@link ImageView} where to set the image
 	 * @param values
@@ -203,8 +199,6 @@ public class AndrolifeViewFactory {
 	}
 
 	/**
-	 * 
-	 * @param activity
 	 *            current {@link SkeletonActivity}
 	 * @param imageView
 	 *            the {@link ImageView} where to set the image

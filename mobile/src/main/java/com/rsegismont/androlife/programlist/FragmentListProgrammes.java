@@ -26,7 +26,6 @@ import android.support.v4.content.Loader;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 
 import com.rsegismont.androlife.R;
@@ -143,16 +142,16 @@ public class FragmentListProgrammes extends AndrolifeListFragment implements Ada
 		this.mType = getArguments().getInt("type");
 		this.calendarMorning = Calendar.getInstance();
 		this.calendarMorning.setTimeInMillis(getArguments().getLong("time"));
-		this.calendarMorning.set(11, 0);
-		this.calendarMorning.set(12, 0);
-		this.calendarMorning.set(13, 0);
-		this.calendarMorning.set(14, 0);
+		this.calendarMorning.set(Calendar.HOUR_OF_DAY, 0);
+		this.calendarMorning.set(Calendar.MINUTE, 0);
+		this.calendarMorning.set(Calendar.SECOND, 0);
+		this.calendarMorning.set(Calendar.MILLISECOND, 0);
 		this.calendarEvening = Calendar.getInstance();
 		this.calendarEvening.setTimeInMillis(getArguments().getLong("time"));
-		this.calendarEvening.set(11, 23);
-		this.calendarEvening.set(12, 59);
-		this.calendarEvening.set(13, 59);
-		this.calendarEvening.set(14, 250);
+		this.calendarEvening.set(Calendar.HOUR_OF_DAY, 23);
+		this.calendarEvening.set(Calendar.MINUTE, 59);
+		this.calendarEvening.set(Calendar.SECOND, 59);
+		this.calendarEvening.set(Calendar.MILLISECOND, 250);
 	}
 
 	public Loader<Cursor> onCreateLoader(int paramInt, Bundle paramBundle) {
@@ -245,23 +244,6 @@ public class FragmentListProgrammes extends AndrolifeListFragment implements Ada
 		}
 
 		getListView().setDividerHeight(0);
-
-		getListView().setOnScrollListener(new OnScrollListener() {
-
-			@Override
-			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				if (scrollState == SCROLL_STATE_FLING)
-					getAndrolifeActivity().getImageDownloader().setPauseWork(true);
-				else {
-					getAndrolifeActivity().getImageDownloader().setPauseWork(false);
-				}
-			}
-
-			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-			}
-		});
 
 		getListView().setCacheColorHint(getResources().getColor(R.color.background));
 

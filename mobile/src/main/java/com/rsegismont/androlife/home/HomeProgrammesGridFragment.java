@@ -145,10 +145,5 @@ public class HomeProgrammesGridFragment extends AndrolifeFragment implements Ada
 
 		currrentScrollState = scrollState;
 
-		if (scrollState == SCROLL_STATE_FLING) {
-			getAndrolifeActivity().getImageDownloader().setPauseWork(true);
-		} else {
-			getAndrolifeActivity().getImageDownloader().setPauseWork(false);
-		}
 	}
 }

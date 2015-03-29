@@ -23,9 +23,6 @@
 
 package com.rsegismont.androlife.home;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -42,8 +39,10 @@ import com.rsegismont.androlife.about.AboutActivity;
 import com.rsegismont.androlife.common.Constantes;
 import com.rsegismont.androlife.core.ui.AndrolifeFragment;
 import com.rsegismont.androlife.home.MenuAdapter.DataHolder;
-import com.rsegismont.androlife.noqr.NoqrCaptureActivity;
 import com.rsegismont.androlife.programlist.ProgramListActivity;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class HomeMenuFragment extends AndrolifeFragment implements
 		OnItemClickListener {
@@ -147,11 +146,6 @@ public class HomeMenuFragment extends AndrolifeFragment implements
 		} else if (id == R.string.home_menu_apropos) {
 
 			intent = new Intent(getActivity(), AboutActivity.class);
-			startActivity(intent);
-		}
-
-		else if (id == R.string.home_menu_qr) {
-			intent = new Intent(getActivity(), NoqrCaptureActivity.class);
 			startActivity(intent);
 		}
 	}

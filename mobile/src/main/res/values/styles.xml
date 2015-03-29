@@ -58,22 +58,7 @@
         <item name="android:textAppearance">@android:style/TextAppearance.Small</item>
     </style>
 
-    <!-- NoQr Theme -->
 
-    <style name="Androlife_Noqr_Theme_Camera" parent="@android:Theme.Holo.Light.NoActionBar" />
-
-    <style name="Buttonandrolife_camera_button_theme" parent="@android:style/Widget.Button">
-        <item name="android:textColor">#ff000000</item>
-        <item name="android:minWidth">64.0dip</item>
-        <item name="android:minHeight">48.0dip</item>
-    </style>
-
-    <style name="ImageButtonandrolife_camera_button_theme" parent="@android:style/Widget.ImageButton"></style>
-
-    <style name="androlife_camera_button_theme" parent="@android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:buttonStyle">@style/Buttonandrolife_camera_button_theme</item>
-        <item name="android:imageButtonStyle">@style/ImageButtonandrolife_camera_button_theme</item>
-    </style>
 
     <!-- General Theme -->
     <style name="Widget" />
@@ -85,7 +70,7 @@
      <style name="Androlife_Theme_Transparent" parent="Androlife_Theme">
     </style>
 
-    <style name="Androlife_Theme" parent="@style/Theme.Androlife">
+    <style name="Androlife_Theme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:colorBackgroundCacheHint">@color/background</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:colorBackground">@color/background</item>

@@ -140,12 +140,12 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 		View leftDrawer;
 
 		if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-			getActionBar().setHomeButtonEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
 		}
 
 		if ((orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) || (!isTablet)) {
-			getActionBar().setSubtitle(R.string.home_menu_closed);
+            getSupportActionBar().setSubtitle(R.string.home_menu_closed);
 			leftDrawer = findViewById(R.id.left_drawer);
 
 			if (isTablet) {
@@ -171,10 +171,10 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 				public void onDrawerSlide(View arg0, float arg1) {
 					if ((arg1 >= 0.5f) && (this.progressState == 0)) {
 						this.progressState = 1;
-						getActionBar().setSubtitle(R.string.home_menu_open);
+                        getSupportActionBar().setSubtitle(R.string.home_menu_open);
 					} else if ((arg1 < 0.5f) && (this.progressState == 1)) {
 						this.progressState = 0;
-						getActionBar().setSubtitle(R.string.home_menu_closed);
+                        getSupportActionBar().setSubtitle(R.string.home_menu_closed);
 					}
 				}
 

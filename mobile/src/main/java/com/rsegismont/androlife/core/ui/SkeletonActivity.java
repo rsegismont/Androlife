@@ -24,13 +24,12 @@
 package com.rsegismont.androlife.core.ui;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -39,8 +38,6 @@ import android.view.MenuItem;
 import com.rsegismont.androlife.R;
 import com.rsegismont.androlife.application.AndrolifeApplication;
 import com.rsegismont.androlife.common.SdkUtils;
-import com.rsegismont.androlife.common.utils.ImageCacher;
-import com.rsegismont.androlife.common.utils.ImageFetcher;
 import com.rsegismont.androlife.common.utils.Utils;
 import com.rsegismont.androlife.core.utils.ActivityEffectsHelper;
 import com.rsegismont.androlife.core.utils.ActivityEffectsHelper.EffectListener;
@@ -57,7 +54,7 @@ import java.util.List;
  * @since 1.0
  * 
  */
-public abstract class SkeletonActivity extends FragmentActivity implements EffectListener {
+public abstract class SkeletonActivity extends ActionBarActivity implements EffectListener {
 	protected AndrolifeApplication androlifeApplication;
 	protected int height = 0;
 	protected int width = 0;
@@ -124,24 +121,7 @@ public abstract class SkeletonActivity extends FragmentActivity implements Effec
 		this.androlifeApplication = ((AndrolifeApplication) getApplication());
 		androlifeApplication.destroyCpt = (1 + androlifeApplication.destroyCpt);
 
-		if (getImageDownloader() == null) {
-			initImageDownloader();
-		}
 
-	}
-
-	private void initImageDownloader() {
-		ImageCacher.ImageCacheParams localImageCacheParams = new ImageCacher.ImageCacheParams(this, "thumbs");
-		localImageCacheParams.setMemCacheSizePercent(0.5F);
-		this.androlifeApplication.setImageDownloader(new ImageFetcher(this));
-
-		getImageDownloader().setImageFadeIn(true);
-		getImageDownloader().setLoadingImage(R.drawable.toutsuite);
-		getImageDownloader().addImageCache(localImageCacheParams);
-	}
-
-	public ImageFetcher getImageDownloader() {
-		return androlifeApplication.mImageDownloader;
 	}
 
 	public Menu getMenu() {
@@ -172,8 +152,7 @@ public abstract class SkeletonActivity extends FragmentActivity implements Effec
 		try {
 			androlifeApplication.destroyCpt = Math.max(0, (-1 + androlifeApplication.destroyCpt));
 			if (androlifeApplication.destroyCpt == 0) {
-				getImageDownloader().closeCache();
-				androlifeApplication.setImageDownloader(null);
+
 			}
 			androlifeApplication = null;
 			preferencesManager = null;
@@ -193,30 +172,13 @@ public abstract class SkeletonActivity extends FragmentActivity implements Effec
 			return super.onOptionsItemSelected(item);
 		}
 	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		final IntentFilter filter = new IntentFilter();
-		filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-		registerReceiver(AndrolifeApplication.instance.mConnReceiver, filter);
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		unregisterReceiver(AndrolifeApplication.instance.mConnReceiver);
-	}
-
 	@Override
 	protected void onStart() {
 		super.onStart();
 		try {
 
 			if (androlifeApplication.pauseCpt == 0) {
-				androlifeApplication.mImageDownloader.setPauseWork(false);
-				androlifeApplication.mImageDownloader.setExitTasksEarly(false);
-				// Picasso.with(getApplicationContext()).setDebugging(true);
+
 			}
 
 			androlifeApplication.pauseCpt = (1 + androlifeApplication.pauseCpt);
@@ -232,10 +194,7 @@ public abstract class SkeletonActivity extends FragmentActivity implements Effec
 
 			androlifeApplication.pauseCpt = Math.max(0, (-1 + androlifeApplication.pauseCpt));
 			if (this.androlifeApplication.pauseCpt == 0) {
-				// Picasso.with(getApplicationContext()).getSnapshot().dump();
-				androlifeApplication.mImageDownloader.setPauseWork(true);
-				androlifeApplication.mImageDownloader.setExitTasksEarly(true);
-				androlifeApplication.mImageDownloader.flushCache();
+
 			}
 		} catch (Throwable localThrowable) {
 			localThrowable.printStackTrace();
