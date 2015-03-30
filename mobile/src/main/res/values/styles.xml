@@ -71,6 +71,8 @@
     </style>
 
     <style name="Androlife_Theme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+
         <item name="android:colorBackgroundCacheHint">@color/background</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:colorBackground">@color/background</item>

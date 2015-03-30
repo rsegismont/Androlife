@@ -102,7 +102,7 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
         super.onCreate(paramBundle);
         final int type = getIntent().getIntExtra(Constantes.TYPE, Constantes.CURSOR_FULL);
         getSupportLoaderManager().initLoader(type, null, this);
-        getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
         setContentView(R.layout.androlife_details_activity);
         setTitle(getResources().getString(R.string.app_name));
@@ -110,16 +110,16 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
         switch (type) {
 
             case Constantes.CURSOR_FULL:
-                getActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
+                getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
                 break;
             case Constantes.CURSOR_QUERY:
-                getActionBar().setSubtitle(getResources().getString(R.string.subtitle_query));
+                getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_query));
                 break;
             case Constantes.CURSOR_NEWS:
-                getActionBar().setSubtitle(getResources().getString(R.string.subtitle_news));
+                getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_news));
                 break;
             case Constantes.CURSOR_SELECTION:
-                getActionBar().setSubtitle(getResources().getString(R.string.subtitle_selection));
+                getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_selection));
                 break;
             default:
                 break;
