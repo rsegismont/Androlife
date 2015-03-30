@@ -67,23 +67,13 @@ public class AboutActivity extends SkeletonActivity implements ActionBar.TabList
 		screenDimensions = getScreenDimension(this);
 
 		setContentView(R.layout.androlife_about_activity);
-		final ActionBar localActionBar = getActionBar();
+		final android.support.v7.app.ActionBar localActionBar = getSupportActionBar();
 		localActionBar.setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
-		localActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
 		this.mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 		this.mViewPager = ((ViewPager) findViewById(R.id.about_pager));
 		this.mViewPager.setAdapter(this.mSectionsPagerAdapter);
-		this.mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-			public void onPageSelected(int paramAnonymousInt) {
-				localActionBar.setSelectedNavigationItem(paramAnonymousInt);
-			}
-		});
-		for (int i = 0;; i++) {
-			if (i >= this.mSectionsPagerAdapter.getCount())
-				return;
-			localActionBar.addTab(localActionBar.newTab().setText(this.mSectionsPagerAdapter.getPageTitle(i))
-					.setTabListener(this));
-		}
+
 	}
 
 	public boolean onCreateOptionsMenu(Menu paramMenu) {
@@ -128,8 +118,8 @@ public class AboutActivity extends SkeletonActivity implements ActionBar.TabList
 			return 3;
 		}
 
-		public Fragment getItem(int paramInt) {
-			switch (paramInt) {
+		public Fragment getItem(int index) {
+			switch (index) {
 			case 0:
 				return new AboutAndrolifeFragment();
 			case 1:
@@ -144,11 +134,12 @@ public class AboutActivity extends SkeletonActivity implements ActionBar.TabList
 
 		}
 
-		public CharSequence getPageTitle(int paramInt) {
+		public CharSequence getPageTitle(int index) {
 			String pageTitle;
-			switch (paramInt) {
+			switch (index) {
 			default:
-				pageTitle = null;
+				pageTitle = "";
+                break;
 			case 0:
 				pageTitle = getString(com.rsegismont.androlife.R.string.about_section1);
 				break;

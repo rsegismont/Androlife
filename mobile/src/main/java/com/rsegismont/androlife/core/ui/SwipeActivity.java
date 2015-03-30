@@ -25,9 +25,9 @@ package com.rsegismont.androlife.core.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.rsegismont.androlife.common.SdkUtils;
@@ -60,7 +60,13 @@ public abstract class SwipeActivity extends SkeletonActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem paramMenuItem) {
-
+        // Pass the event to ActionBarDrawerToggle, if it returns
+        // true, then it has handled the app icon touch event
+        // This handle among other things open & close the drawer
+        // when the navigation icon(burger/arrow) is clicked on.
+        if (mDrawerToggle.onOptionsItemSelected(paramMenuItem)) {
+            return true;
+        }
 		switch (paramMenuItem.getItemId()) {
 		case android.R.id.home:
 			if (!SdkUtils.isTabletLandscape(getApplicationContext())) {

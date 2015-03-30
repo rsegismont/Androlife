@@ -24,8 +24,6 @@
 package com.rsegismont.androlife.calendar;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 
 /**
  * Wrapper for Agenda Events
@@ -55,26 +53,9 @@ public class CalendarWrapper {
 	 */
 	public static void registerCalendarEvent(Context context, String title, String location, String description,
 			long startTime, long endTime) {
-		// For ICS and more, using official API
-		if (Build.VERSION.SDK_INT > 14) {
+
 			CalendarIcs.registerCalendarEvent(context, title, location, description, startTime, endTime);
-		}
-		// Pre - ICS : using private apis
-		else {
-			final Intent intent = new Intent(context, AgendaActivity.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
-			intent.putExtra(CalendarCompat.TITLE, title);
-			intent.putExtra(CalendarCompat.DESCRIPTION, description);
-			intent.putExtra(CalendarCompat.LOCATION, location);
-			intent.putExtra(CalendarCompat.START_TIME, startTime);
-			intent.putExtra(CalendarCompat.END_TIME, endTime);
-			try {
-				context.startActivity(intent);
-			} catch (Throwable e) {
-
-			}
-
-		}
+		
 	}
 
 }

@@ -30,12 +30,10 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.DrawerLayout.DrawerListener;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -156,38 +154,37 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 
 			this.mDrawerLayout = ((DrawerLayout) findViewById(R.id.drawer_layout));
 			this.mDrawerLayout.setDrawerShadow(getResources().getDrawable(R.drawable.drawer_shadow), Gravity.LEFT);
-			this.mDrawerToggle = new ActionBarDrawerToggle(this, this.mDrawerLayout, R.drawable.ic_drawer,
-					R.string.home_menu_open, R.string.home_menu_closed);
-			this.mDrawerLayout.setDrawerListener(new DrawerListener() {
+			this.mDrawerToggle = new android.support.v7.app.ActionBarDrawerToggle(this,mDrawerLayout,R.string.home_menu_open, R.string.home_menu_closed){
+                private int progressState = 0;
 
-				private int progressState = 0;
 
-				@Override
-				public void onDrawerStateChanged(int arg0) {
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    super.onDrawerClosed(drawerView);
+                    this.progressState = 0;
+                }
 
-				}
-
-				@Override
-				public void onDrawerSlide(View arg0, float arg1) {
-					if ((arg1 >= 0.5f) && (this.progressState == 0)) {
-						this.progressState = 1;
+                @Override
+                public void onDrawerSlide(View drawerView, float slideOffset) {
+                    super.onDrawerSlide(drawerView, slideOffset);
+                    if ((slideOffset >= 0.5f) && (this.progressState == 0)) {
+                        this.progressState = 1;
                         getSupportActionBar().setSubtitle(R.string.home_menu_open);
-					} else if ((arg1 < 0.5f) && (this.progressState == 1)) {
-						this.progressState = 0;
+                    } else if ((slideOffset < 0.5f) && (this.progressState == 1)) {
+                        this.progressState = 0;
                         getSupportActionBar().setSubtitle(R.string.home_menu_closed);
-					}
-				}
+                    }
+                }
 
-				@Override
-				public void onDrawerOpened(View arg0) {
-					this.progressState = 1;
-				}
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                    this.progressState = 1;
+                }
+            };
 
-				@Override
-				public void onDrawerClosed(View arg0) {
-					this.progressState = 0;
-				}
-			});
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+
 
 		}
 
