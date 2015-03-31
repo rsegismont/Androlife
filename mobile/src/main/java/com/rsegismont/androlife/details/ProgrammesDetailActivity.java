@@ -1,14 +1,15 @@
 package com.rsegismont.androlife.details;
 
 import android.app.ActionBar;
+import android.content.ContentValues;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.PagerTabStrip;
-import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 
 import com.rsegismont.androlife.R;
@@ -30,7 +31,8 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
     public PagerTabStrip tabTitle;
     public boolean firstInit = true;
     private int gone;
-    private ViewPager myPager;
+    private DetailsFragment fragmentDetails;
+
 
     @Override
     public int getActivityOrientation() {
@@ -105,6 +107,7 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
         setContentView(R.layout.androlife_details_activity);
+        fragmentDetails = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.androlife_detail_fragment);
         setTitle(getResources().getString(R.string.app_name));
 
         switch (type) {
@@ -125,13 +128,9 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
                 break;
         }
 
-        myPager = (ViewPager) findViewById(R.id.host_tab_viewpager);
+
         tabTitle = (PagerTabStrip) findViewById(R.id.host_tab_title);
         if (tabTitle != null) {
-
-
-
-
             this.tabTitle.setTabIndicatorColor(getResources().getColor(R.color.androlife_programs_hint_underline));
             this.tabTitle.setTextColor(getResources().getColor(R.color.androlife_programs_hint_text));
         }
@@ -141,10 +140,10 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
     public Loader<Cursor> onCreateLoader(int paramInt, Bundle paramBundle) {
 
         Calendar morningCalendar = Calendar.getInstance();
-        morningCalendar.setTimeInMillis(getIntent().getLongExtra("DETAIL_DATE_INDEX", 0L));
+        morningCalendar.setTimeInMillis(getIntent().getLongExtra("DETAIL_DATE_INDEX", 0));
         morningCalendar.add(Calendar.HOUR_OF_DAY, -24);
         Calendar eveningCalendar = Calendar.getInstance();
-        eveningCalendar.setTimeInMillis(getIntent().getLongExtra("DETAIL_DATE_INDEX", 0L));
+        eveningCalendar.setTimeInMillis(getIntent().getLongExtra("DETAIL_DATE_INDEX", 0));
         eveningCalendar.add(Calendar.HOUR_OF_DAY, 24);
         switch (paramInt) {
             default:
@@ -175,9 +174,10 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
     public void onLoadFinished(Loader<Cursor> paramLoader, Cursor cursor) {
 
         this.mCursor = cursor;
+        // TODO : replace with railway on phones and portrait on tablet
         adapterDetails = new DetailsAdapter(this);
-        myPager.setOnPageChangeListener(adapterDetails);
-        myPager.setAdapter(adapterDetails);
+        //     myPager.setOnPageChangeListener(adapterDetails);
+        //    myPager.setAdapter(adapterDetails);
 
         final String intentDate = getIntent().getDataString();
         if (intentDate == null) {
@@ -216,17 +216,13 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
             final long value = mCursor.getLong(mCursor.getColumnIndex(DatabaseColumn.DATE_UTC.stringValue));
             final int index = i;
             if (initialTime == value) {
-
-                if (myPager.getCurrentItem() == index) {
-                    if (firstInit == true) {
-                        firstInit = false;
-                        adapterDetails.onPageSelected(index);
-                    }
-                } else {
-                    myPager.setCurrentItem(index, false);
-                }
-
-                break;
+                Bundle mBundle = new Bundle();
+                ContentValues localContentValues = new ContentValues();
+                DatabaseUtils.cursorRowToContentValues(mCursor, localContentValues);
+                mBundle.putParcelable(DetailsFragment.CURSOR, localContentValues);
+                mBundle.putLong(DetailsFragment.TIME, initialTime);
+                fragmentDetails.prepareDatas(mBundle);
+                //TODO init fragment values
             }
 
         }

@@ -52,12 +52,19 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 		return ((ProgrammeAbstract) getActivity()).detailsHeaderDateFormat;
 	}
 
-	public void setupDatas() {
+	public void prepareDatas(Bundle bundle) {
 
 		this.isAvailableOnNO = false;
-		this.values = ((ContentValues) getArguments().getParcelable(CURSOR));
+		this.values = (bundle.getParcelable(CURSOR));
 
-		try {
+        this.mTimeEnd = getArguments().getLong(TIME);
+        if (this.mTimeEnd == -1) {
+            this.mTimeEnd = (SdkUtils.ONE_HOUR + this.values.getAsLong(
+                    SharedInformation.DatabaseColumn.DATE_UTC.stringValue).longValue());
+        }
+
+
+        try {
 
 			final long currentTime = System.currentTimeMillis();
 
@@ -117,7 +124,7 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
-		setupDatas();
+
 
 		if (SdkUtils.isATablet(getActivity())) {
 			this.width = getResources().getDimensionPixelSize(R.dimen.details_width);
@@ -167,22 +174,19 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 		final ListView mListView = (ListView) view.findViewById(R.id.detail_content);
 
 		SdkUtils.setTextViewRoboto(mDateView, "Roboto-Regular");
+        final TextView mSubTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_subtitle);
 
-		this.mTimeEnd = getArguments().getLong(TIME);
-		if (this.mTimeEnd == -1) {
-			this.mTimeEnd = (SdkUtils.ONE_HOUR + this.values.getAsLong(
-					SharedInformation.DatabaseColumn.DATE_UTC.stringValue).longValue());
-		}
+        SdkUtils.setTextViewRoboto(mSubTitleView, "Roboto-Regular");
+        SdkUtils.setTextViewRoboto(mTitleView, "Roboto-Bold");
+
+
 
 		AndrolifeViewFactory.displayImage(mImageView, values, width, height);
 		AndrolifeViewFactory.addCsaView(mCsaView, values.getAsString(SharedInformation.DatabaseColumn.CSA.stringValue));
 		AndrolifeViewFactory.addHdView(mHdView, values.getAsString(SharedInformation.DatabaseColumn.HD.stringValue),
 				true);
 
-		final TextView mSubTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_subtitle);
 
-		SdkUtils.setTextViewRoboto(mSubTitleView, "Roboto-Regular");
-		SdkUtils.setTextViewRoboto(mTitleView, "Roboto-Bold");
 
 		// Type
 		mTypeView.setText(values.getAsString(SharedInformation.DatabaseColumn.TYPE.stringValue));
@@ -197,9 +201,6 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 			}
 		}
 
-		/**
-		 * if (mDateView != null) { mDateView.setText(this.mDate); }
-		 */
 
 		mListView.addHeaderView(headerView);
 		mAdapter = new DetailsContentAdapter((ProgrammeAbstract) getActivity(), this.values,
@@ -208,6 +209,8 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 		return mListView;
 
 	}
+
+
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

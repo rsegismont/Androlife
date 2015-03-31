@@ -64,6 +64,7 @@
         <!-- Others -->
 
         <activity
+            android:theme="@style/Androlife_Theme_NoActionBar"
             android:name="com.rsegismont.androlife.details.ProgrammesDetailActivity"
             android:configChanges="keyboardHidden"
             android:screenOrientation="portrait" >

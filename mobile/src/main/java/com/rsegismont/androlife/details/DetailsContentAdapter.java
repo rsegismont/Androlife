@@ -28,8 +28,8 @@ public class DetailsContentAdapter extends BaseAdapter {
 			boolean paramBoolean, Date paramDate) {
 		this.mLayout = paramInt;
 		this.inflator = ((LayoutInflater) paramActivity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE));
-		this.titleList = new SparseArray<String>();
-		this.contentList = new SparseArray<String>();
+		this.titleList = new SparseArray<>();
+		this.contentList = new SparseArray<>();
 		this.count = 0;
 
 		addToAdapter("Détails", paramContentValues.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
