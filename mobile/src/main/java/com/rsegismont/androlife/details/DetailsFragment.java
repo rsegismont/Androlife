@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,7 +35,7 @@ import com.rsegismont.androlife.core.utils.AndrolifeViewFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class DetailsFragment extends AndrolifeFragment implements LoaderCallbacks<Cursor> {
+public class DetailsFragment extends AndrolifeFragment implements LoaderCallbacks<Cursor>, Toolbar.OnMenuItemClickListener {
 	public static final String CURSOR = "cursor";
 	public static final String TIME = "time";
 	private int height;
@@ -47,22 +48,32 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 	private ContentValues values;
 	private int width;
 	private DetailsContentAdapter mAdapter;
+    private Toolbar toolbar;
+    private ImageView mCsaView,mHdView;
+    private TextView mTypeView;
+    private TextView mTitleView;
+    private TextView mSubTitleView;
+    private ListView mListView;
 
-	public SimpleDateFormat getDateFormatter() {
+    public SimpleDateFormat getDateFormatter() {
 		return ((ProgrammeAbstract) getActivity()).detailsHeaderDateFormat;
 	}
 
 	public void prepareDatas(Bundle bundle) {
 
+
+
 		this.isAvailableOnNO = false;
 		this.values = (bundle.getParcelable(CURSOR));
 
-        this.mTimeEnd = getArguments().getLong(TIME);
+
+
+        this.mTimeEnd = bundle.getLong(TIME);
         if (this.mTimeEnd == -1) {
             this.mTimeEnd = (SdkUtils.ONE_HOUR + this.values.getAsLong(
                     SharedInformation.DatabaseColumn.DATE_UTC.stringValue).longValue());
         }
-
+        getLoaderManager().initLoader(500, null, this);
 
         try {
 
@@ -91,7 +102,31 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 
 		mDate = getDateFormatter().format(new Date(values.getAsLong(DatabaseColumn.DATE_UTC.stringValue)));
 
-	}
+        mAdapter.setDatas(  (ProgrammeAbstract) getActivity(),     this.values, this.isAvailableOnNO, this.startTime);
+
+        AndrolifeViewFactory.displayImage(mImageView, values, width, height);
+        AndrolifeViewFactory.addCsaView(mCsaView, values.getAsString(SharedInformation.DatabaseColumn.CSA.stringValue));
+        AndrolifeViewFactory.addHdView(mHdView, values.getAsString(SharedInformation.DatabaseColumn.HD.stringValue),
+                true);
+
+
+
+        // Type
+        mTypeView.setText(values.getAsString(SharedInformation.DatabaseColumn.TYPE.stringValue));
+
+        mTitleView.setText(values.getAsString(SharedInformation.DatabaseColumn.TITLE.stringValue));
+        final String subTitle = values.getAsString(SharedInformation.DatabaseColumn.SUBTITLE.stringValue);
+        if (mSubTitleView != null) {
+            if (TextUtils.isEmpty(subTitle)) {
+                mSubTitleView.setVisibility(View.GONE);
+            } else {
+                mSubTitleView.setText(subTitle);
+            }
+        }
+
+        setupActionBarMenu(toolbar.getMenu());
+
+    }
 
 	public void setupActionBarMenu(Menu menu) {
 		if (isAvailableOnNO) {
@@ -118,7 +153,7 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
-			setHasOptionsMenu(true);
+			//setHasOptionsMenu(true);
 		}
 	}
 
@@ -153,105 +188,51 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		getLoaderManager().initLoader(500, null, this);
+
 	}
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle paramBundle) {
 
 		final View view = inflater.inflate(R.layout.androlife_details_fragment, container, false);
+        mListView = (ListView) view.findViewById(R.id.detail_content);
+        toolbar = (Toolbar) view.findViewById(R.id.androlife_details_actionbar);
+       toolbar.inflateMenu(R.menu.detail);
+        toolbar.setOnMenuItemClickListener(this);
 
-		final View headerView = inflater.inflate(R.layout.androlife_details_header, (ViewGroup) view, false);
+		final View headerView = inflater.inflate(R.layout.androlife_details_header, null, false);
 
 		// Image
 		mImageView = (ImageView) headerView.findViewById(R.id.androlife_detail_image);
 
-		final ImageView mHdView = (ImageView) headerView.findViewById(R.id.androlife_detail_hd);
-		final ImageView mCsaView = (ImageView) headerView.findViewById(R.id.androlife_detail_csa);
-		final TextView mTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_title);
+		mHdView = (ImageView) headerView.findViewById(R.id.androlife_detail_hd);
+		mCsaView = (ImageView) headerView.findViewById(R.id.androlife_detail_csa);
+		mTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_title);
 		final TextView mDateView = null;
 
-		final TextView mTypeView = (TextView) headerView.findViewById(R.id.androlife_detail_type);
-		final ListView mListView = (ListView) view.findViewById(R.id.detail_content);
+		mTypeView = (TextView) headerView.findViewById(R.id.androlife_detail_type);
+
 
 		SdkUtils.setTextViewRoboto(mDateView, "Roboto-Regular");
-        final TextView mSubTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_subtitle);
+        mSubTitleView = (TextView) headerView.findViewById(R.id.androlife_detail_subtitle);
 
         SdkUtils.setTextViewRoboto(mSubTitleView, "Roboto-Regular");
         SdkUtils.setTextViewRoboto(mTitleView, "Roboto-Bold");
 
 
 
-		AndrolifeViewFactory.displayImage(mImageView, values, width, height);
-		AndrolifeViewFactory.addCsaView(mCsaView, values.getAsString(SharedInformation.DatabaseColumn.CSA.stringValue));
-		AndrolifeViewFactory.addHdView(mHdView, values.getAsString(SharedInformation.DatabaseColumn.HD.stringValue),
-				true);
-
-
-
-		// Type
-		mTypeView.setText(values.getAsString(SharedInformation.DatabaseColumn.TYPE.stringValue));
-
-		mTitleView.setText(values.getAsString(SharedInformation.DatabaseColumn.TITLE.stringValue));
-		final String subTitle = values.getAsString(SharedInformation.DatabaseColumn.SUBTITLE.stringValue);
-		if (mSubTitleView != null) {
-			if (TextUtils.isEmpty(subTitle)) {
-				mSubTitleView.setVisibility(View.GONE);
-			} else {
-				mSubTitleView.setText(subTitle);
-			}
-		}
 
 
 		mListView.addHeaderView(headerView);
-		mAdapter = new DetailsContentAdapter((ProgrammeAbstract) getActivity(), this.values,
-				R.layout.androlife_details_item, this.isAvailableOnNO, this.startTime);
-		mListView.setAdapter(mAdapter);
-		return mListView;
+		mAdapter = new DetailsContentAdapter((ProgrammeAbstract) getActivity() ,
+				R.layout.androlife_details_item);
+        mListView.setAdapter(mAdapter);
+		return view;
 
 	}
 
 
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
 
-		switch (item.getItemId()) {
-		case R.id.detail_viewnolifeonline:
-
-			try {
-
-				startActivity(SdkUtils.prepare_web(getActivity(), noUrl));
-			} catch (Throwable e) {
-				e.printStackTrace();
-			}
-			return true;
-
-		case R.id.detail_register_calendar:
-
-			CalendarWrapper.registerCalendarEvent(getActivity(),
-					values.getAsString(DatabaseColumn.DESCRIPTION.stringValue), "Nolife TV",
-					values.getAsString(DatabaseColumn.DETAIL.stringValue),
-					values.getAsLong(DatabaseColumn.DATE_UTC.stringValue), mTimeEnd);
-			return true;
-
-		case R.id.detail_discuss_forum:
-
-			try {
-				final Intent intent = SdkUtils.prepare_web(getActivity(),
-						values.getAsString(DatabaseColumn.URL.stringValue));
-				if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
-					startActivity(intent);
-				}
-			} catch (Throwable e) {
-				Log.e("android", e.getMessage(), e);
-			}
-			return true;
-		default:
-			break;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
@@ -290,4 +271,44 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 	public void onLoaderReset(Loader<Cursor> arg0) {
 
 	}
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.detail_viewnolifeonline:
+
+                try {
+
+                    startActivity(SdkUtils.prepare_web(getActivity(), noUrl));
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
+                return true;
+
+            case R.id.detail_register_calendar:
+
+                CalendarWrapper.registerCalendarEvent(getActivity(),
+                        values.getAsString(DatabaseColumn.DESCRIPTION.stringValue), "Nolife TV",
+                        values.getAsString(DatabaseColumn.DETAIL.stringValue),
+                        values.getAsLong(DatabaseColumn.DATE_UTC.stringValue), mTimeEnd);
+                return true;
+
+            case R.id.detail_discuss_forum:
+
+                try {
+                    final Intent intent = SdkUtils.prepare_web(getActivity(),
+                            values.getAsString(DatabaseColumn.URL.stringValue));
+                    if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                        startActivity(intent);
+                    }
+                } catch (Throwable e) {
+                    Log.e("android", e.getMessage(), e);
+                }
+                return true;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

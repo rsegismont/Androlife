@@ -35,6 +35,7 @@
     </LinearLayout>
 
     <ImageView
+        android:transitionName="@string/androlife_details_transition_image"
         android:id="@+id/home_programme_large_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/now_height"
@@ -68,6 +69,7 @@
         android:scaleType="fitCenter" />
 
     <TextView
+        android:transitionName="@string/androlife_details_transition_title"
         android:id="@+id/home_programme_large_subtitle"
         android:layout_width="match_parent"
         android:layout_height="24dp"

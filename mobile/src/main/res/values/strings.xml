@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Details -->
+    <string name="androlife_details_transition_title">androlife_details_transition_title</string>
+    <string name="androlife_details_transition_image">androlife_details_transition_image</string>
     
         <!-- Dates -->
     <string name="androlife_dates_yesterday">Hier</string>

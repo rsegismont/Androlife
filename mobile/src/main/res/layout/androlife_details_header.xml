@@ -5,6 +5,7 @@
     android:orientation="vertical" >
 
     <ImageView
+        android:transitionName="@string/androlife_details_transition_image"
         android:id="@+id/androlife_detail_image"
         style="@style/Androlife_Details_Image"
         android:src="@drawable/toutsuite" />
@@ -18,6 +19,7 @@
             android:orientation="vertical" >
 
             <TextView
+                android:transitionName="@string/androlife_details_transition_title"
                 android:id="@+id/androlife_detail_title"
                 style="@style/Androlife_Details_Title"
                 android:text="Titre" />

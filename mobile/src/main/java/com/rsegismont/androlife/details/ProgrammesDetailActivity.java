@@ -1,6 +1,5 @@
 package com.rsegismont.androlife.details;
 
-import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -104,13 +103,13 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
         super.onCreate(paramBundle);
         final int type = getIntent().getIntExtra(Constantes.TYPE, Constantes.CURSOR_FULL);
         getSupportLoaderManager().initLoader(type, null, this);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
+    //    getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
         setContentView(R.layout.androlife_details_activity);
         fragmentDetails = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.androlife_detail_fragment);
-        setTitle(getResources().getString(R.string.app_name));
+      //  setTitle(getResources().getString(R.string.app_name));
 
-        switch (type) {
+    /**    switch (type) {
 
             case Constantes.CURSOR_FULL:
                 getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
@@ -126,7 +125,7 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
                 break;
             default:
                 break;
-        }
+        }*/
 
 
         tabTitle = (PagerTabStrip) findViewById(R.id.host_tab_title);
@@ -214,7 +213,6 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
         for (int i = 0; i < mCursor.getCount(); i++) {
             mCursor.moveToPosition(i);
             final long value = mCursor.getLong(mCursor.getColumnIndex(DatabaseColumn.DATE_UTC.stringValue));
-            final int index = i;
             if (initialTime == value) {
                 Bundle mBundle = new Bundle();
                 ContentValues localContentValues = new ContentValues();

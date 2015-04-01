@@ -24,26 +24,34 @@ public class DetailsContentAdapter extends BaseAdapter {
 	private int mLayout;
 	private SparseArray<String> titleList;
 
-	public DetailsContentAdapter(ProgrammeAbstract paramActivity, ContentValues paramContentValues, int paramInt,
-			boolean paramBoolean, Date paramDate) {
+	public DetailsContentAdapter(ProgrammeAbstract paramActivity,  int paramInt) {
 		this.mLayout = paramInt;
 		this.inflator = ((LayoutInflater) paramActivity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE));
 		this.titleList = new SparseArray<>();
 		this.contentList = new SparseArray<>();
 		this.count = 0;
 
-		addToAdapter("Détails", paramContentValues.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
-		String str;
-		if (paramDate != null) {
-			str = paramActivity.detailsHeaderDateFormat.format(paramDate);
-			if (paramBoolean) {
-				addToAdapter("Noco", "Disponible depuis le " + str);
-			} else {
-				addToAdapter("Noco", "Sera disponible à partir du " + str);
-			}
-		}
+
+
+
 
 	}
+
+    public void setDatas(ProgrammeAbstract programActivity,ContentValues values,boolean isAvailable,Date paramDate){
+
+        addToAdapter("Détails", values.getAsString(SharedInformation.DatabaseColumn.DETAIL.stringValue));
+
+        if (paramDate != null) {
+            String str = programActivity.detailsHeaderDateFormat.format(paramDate);
+            if (isAvailable) {
+                addToAdapter("Noco", "Disponible depuis le " + str);
+            } else {
+                addToAdapter("Noco", "Sera disponible à partir du " + str);
+            }
+        }
+
+        notifyDataSetChanged();
+    }
 
 	public void addToAdapter(String title, String content) {
 		if (!content.equals("")) {

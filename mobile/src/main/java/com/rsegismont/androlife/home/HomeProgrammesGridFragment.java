@@ -26,6 +26,8 @@ package com.rsegismont.androlife.home;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,10 +91,18 @@ public class HomeProgrammesGridFragment extends AndrolifeFragment implements Ada
 				final Intent intent = new Intent(getActivity(),
 						SdkUtils.isTabletLandscape(getActivity()) ? ProgramListActivity.class
 								: ProgrammesDetailActivity.class);
+
 				intent.putExtra(Constantes.DETAIL_DATE_TIME, cursor.getLong(dateUtcIndex));
 				if (previousPosition >= 0)
 					cursor.moveToPosition(previousPosition);
-				startActivity(intent);
+
+                View photo = (View) adapter.getView(position, null, gridView).findViewById(R.id.home_programme_large_image);
+                ActivityOptionsCompat options =
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
+                                photo,   // The view which starts the transition
+                                getString(R.string.androlife_details_transition_image)    // The transitionName of the view we’re transitioning to
+                        );
+                ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
 			}
 		} catch (Throwable localThrowable) {
 			localThrowable.printStackTrace();
