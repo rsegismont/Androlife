@@ -28,6 +28,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,11 +97,13 @@ public class HomeProgrammesGridFragment extends AndrolifeFragment implements Ada
 				if (previousPosition >= 0)
 					cursor.moveToPosition(previousPosition);
 
-                View photo = (View) adapter.getView(position, null, gridView).findViewById(R.id.home_programme_large_image);
-                ActivityOptionsCompat options =
-                        ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),
-                                photo,   // The view which starts the transition
-                                getString(R.string.androlife_details_transition_image)    // The transitionName of the view we’re transitioning to
+
+
+
+				ActivityOptionsCompat options =
+						ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(),	new Pair<>(
+										view.findViewById(R.id.home_programme_large_image),
+										getString(R.string.androlife_details_transition_image))  // The transitionName of the view we’re transitioning to
                         );
                 ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
 			}

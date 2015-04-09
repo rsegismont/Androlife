@@ -28,6 +28,7 @@ import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
@@ -134,6 +135,8 @@ public class HomeActivity extends SwipeActivity implements LoaderManager.LoaderC
 		final int orientation = getResources().getConfiguration().orientation;
 		final boolean isTablet = SdkUtils.isATablet(getApplicationContext());
 		setContentView(R.layout.androlife_navigation);
+
+
 
 		View leftDrawer;
 

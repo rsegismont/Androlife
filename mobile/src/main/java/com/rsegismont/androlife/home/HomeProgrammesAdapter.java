@@ -28,6 +28,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.preference.PreferenceManager;
+import android.support.v4.view.ViewCompat;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -178,6 +179,8 @@ public class HomeProgrammesAdapter extends BaseAdapter {
 		viewHolder.programme_description.setText(dateString + " : " + titleString);
 
 		viewHolder.mSubTitleView.setVisibility(View.VISIBLE);
+
+
 
 		final String subtitleString = contentValues.getAsString(SharedInformation.DatabaseColumn.SUBTITLE.stringValue);
 

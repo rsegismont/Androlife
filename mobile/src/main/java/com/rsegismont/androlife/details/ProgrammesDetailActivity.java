@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
@@ -100,13 +101,19 @@ public class ProgrammesDetailActivity extends ProgrammeAbstract implements Loade
     }
 
     public void onCreate(Bundle paramBundle) {
+
+        // TODO : improve this code, used to stop animation until fragment is displayed
+        if(Build.VERSION.SDK_INT>=21) {
+            postponeEnterTransition();
+        }
         super.onCreate(paramBundle);
         final int type = getIntent().getIntExtra(Constantes.TYPE, Constantes.CURSOR_FULL);
         getSupportLoaderManager().initLoader(type, null, this);
     //    getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
 
-        setContentView(R.layout.androlife_details_activity);
-        fragmentDetails = (DetailsFragment) getSupportFragmentManager().findFragmentById(R.id.androlife_detail_fragment);
+
+        fragmentDetails = new DetailsFragment();
+        getSupportFragmentManager().beginTransaction().replace(android.R.id.content,fragmentDetails).commit();
       //  setTitle(getResources().getString(R.string.app_name));
 
     /**    switch (type) {
