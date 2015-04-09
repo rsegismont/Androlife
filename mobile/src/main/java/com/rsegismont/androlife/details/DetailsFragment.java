@@ -257,12 +257,12 @@ public class DetailsFragment extends AndrolifeFragment implements LoaderCallback
 
 
         mListView = (ListView) view.findViewById(R.id.detail_content);
-        toolbar = (Toolbar) view.findViewById(R.id.androlife_details_actionbar);
-        toolbar.inflateMenu(R.menu.detail);
-        toolbar.setOnMenuItemClickListener(this);
+
 
         final View headerView = inflater.inflate(R.layout.androlife_details_header, null, false);
-
+        toolbar = (Toolbar) headerView.findViewById(R.id.androlife_details_actionbar);
+        toolbar.inflateMenu(R.menu.detail);
+        toolbar.setOnMenuItemClickListener(this);
         // Image
         mImageView = (ImageView) headerView.findViewById(R.id.androlife_detail_image);
         ViewCompat.setTransitionName(mImageView, getString(R.string.androlife_details_transition_image));

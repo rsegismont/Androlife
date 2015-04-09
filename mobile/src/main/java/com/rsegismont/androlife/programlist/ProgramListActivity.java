@@ -64,7 +64,7 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 	private AdapterList adapterList;
 	private Calendar calendarEvening;
 	private Calendar calendarMorning;
-	public SparseArray<FragmentListProgrammes> currentListFragment = new SparseArray<FragmentListProgrammes>();
+	public SparseArray<FragmentListProgrammes> currentListFragment = new SparseArray<>();
 	public int currentTabPosition = 0;
 
 	private boolean isNowToUpdate = false;
@@ -80,19 +80,19 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 		case Constantes.CURSOR_FULL:
 			if (newPosition != SAVED_NONE) {
 				setTitle(getResources().getString(R.string.program_list_title));
-				getActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
+				getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_all));
 			}
 			break;
 		case Constantes.CURSOR_SELECTION:
 			if (newPosition != SAVED_NONE) {
 				setTitle(getResources().getString(R.string.program_list_title));
-				getActionBar().setSubtitle(getResources().getString(R.string.subtitle_selection));
+				getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_selection));
 			}
 			break;
 		case Constantes.CURSOR_NEWS:
 			if (newPosition != SAVED_NONE) {
 				setTitle(getResources().getString(R.string.program_list_title));
-				getActionBar().setSubtitle(getResources().getString(R.string.subtitle_news));
+				getSupportActionBar().setSubtitle(getResources().getString(R.string.subtitle_news));
 			}
 			break;
 		default:
@@ -156,10 +156,9 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP, ActionBar.DISPLAY_HOME_AS_UP);
-        getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
 		setContentView(R.layout.list_programmes);
+
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		pagerList = (ViewPager) findViewById(R.id.programm_list_viewpager);
 
@@ -209,15 +208,15 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 	public void onDetailsSwiped(int position) {
 		if (this.currentListFragment.get(this.currentTabPosition) != null) {
 			try {
-				final ListView listViewProgrammesFragment = ((FragmentListProgrammes) currentListFragment
+				final ListView listViewProgrammesFragment = (currentListFragment
 						.get(currentTabPosition)).getListView();
-				int mid = (int) (listViewProgrammesFragment.getLastVisiblePosition() - listViewProgrammesFragment
+				int mid = (listViewProgrammesFragment.getLastVisiblePosition() - listViewProgrammesFragment
 						.getFirstVisiblePosition()) / 2;
 				listViewProgrammesFragment.setItemChecked(position, true);
 				listViewProgrammesFragment.setSelection(Math.max(0, position - mid));
 
 			} catch (Throwable localThrowable) {
-
+				localThrowable.printStackTrace();
 			}
 		}
 	}
@@ -245,7 +244,8 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 			}
 
 			try {
-				if (isSelected && (adapterList.selectedIndex == getActionBar().getSelectedNavigationIndex())) {
+				//TODO : change getSupportActionBar().getSelectedNavigationIndex()
+				if (isSelected && (adapterList.selectedIndex == 0 )) {
 					isSelected = false;
 
 					setDetailsSelection(getIntent().getExtras().getLong(Constantes.DETAIL_DATE_TIME));
@@ -294,15 +294,15 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 	}
 
 	public boolean setListNow() {
-		int i = getActionBar().getSelectedNavigationIndex();
+//		int i = getSupportActionBar().getSelectedNavigationIndex();
 		for (int j = 0; j < adapterList.titlesDisplayed.size(); j++) {
 
-			if (((String) this.adapterList.titlesDisplayed.get(j)).equals(AUJOURDHUI)) {
-				getActionBar().setSelectedNavigationItem(j);
-				if (i == j) {
+			if (( this.adapterList.titlesDisplayed.get(j)).equals(AUJOURDHUI)) {
+//				getSupportActionBar().setSelectedNavigationItem(j);
+				//if (i == j) {
 					this.pagerList.requestFocus();
 					return true;
-				}
+			//	}
 			}
 		}
 
@@ -323,7 +323,7 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 		private int newPosition;
 
 		public AdapterTask(ProgramListActivity listActivity, int newPosition) {
-			this.listActivity = new WeakReference<ProgramListActivity>(listActivity);
+			this.listActivity = new WeakReference<>(listActivity);
 			this.newPosition = newPosition;
 		}
 
@@ -355,7 +355,8 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 					if (newPosition == SAVED_NOW) {
 						activity.setListNow();
 					} else if (newPosition >= 0) {
-						activity.getActionBar().setSelectedNavigationItem(newPosition);
+						//TODO change
+						//activity.getSupportActionBar().setSelectedNavigationItem(newPosition);
 					}
 				}
 			}
@@ -364,10 +365,10 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 
 	}
 
-	private static class AdapterList extends FragmentStatePagerAdapter implements ActionBar.TabListener,
+	private static class AdapterList extends FragmentStatePagerAdapter implements
 			ViewPager.OnPageChangeListener {
-		public List<Long> titles = new LinkedList<Long>();
-		public List<String> titlesDisplayed = new LinkedList<String>();
+		public List<Long> titles = new LinkedList<>();
+		public List<String> titlesDisplayed = new LinkedList<>();
 		private WeakReference<ProgramListActivity> pgList;
 		private int selectedIndex = -1;
 		private long selectedTime = -1;
@@ -378,7 +379,7 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 			final SimpleDateFormat dateFormat = new SimpleDateFormat(pgList.getString(R.string.androlife_time_tabs),
 					Locale.getDefault());
 
-			this.pgList = new WeakReference<ProgramListActivity>(pgList);
+			this.pgList = new WeakReference<>(pgList);
 			if (pgList.getIntent().hasExtra(Constantes.DETAIL_DATE_TIME)) {
 				selectedTime = pgList.getIntent().getExtras().getLong(Constantes.DETAIL_DATE_TIME);
 			}
@@ -400,9 +401,6 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 					else
 						titlesDisplayed.add(dateFormat.format(new Date(time)));
 
-					final ActionBar.Tab tab = pgList.getActionBar().newTab()
-							.setText(titlesDisplayed.get(titlesDisplayed.size() - 1)).setTabListener(this);
-					pgList.getActionBar().addTab(tab);
 
 				}
 
@@ -435,13 +433,13 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 
 				Bundle bundle = new Bundle();
 				bundle.putInt(FragmentListProgrammes.TYPE, activity.mType);
-				bundle.putLong(FragmentListProgrammes.TIME, ((Long) titles.get(position)).longValue());
+				bundle.putLong(FragmentListProgrammes.TIME, ( titles.get(position)));
 				if (selectedIndex != -1) {
 					bundle.putBoolean(FragmentListProgrammes.IS_SELECTED, selectedIndex == position);
 					bundle.putLong(FragmentListProgrammes.SELECTED_TIME, selectedTime);
 				} else {
 					bundle.putBoolean(FragmentListProgrammes.IS_TODAY,
-							((String) titlesDisplayed.get(position)).equals(AUJOURDHUI));
+							( titlesDisplayed.get(position)).equals(AUJOURDHUI));
 				}
 
 				listProgrammesFragment.setArguments(bundle);
@@ -459,12 +457,12 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
 		public void onPageSelected(int paramInt) {
 			final ProgramListActivity activity = pgList.get();
 			if (activity != null) {
-				activity.getActionBar().setSelectedNavigationItem(paramInt);
+				//activity.getSupportActionBar().setSelectedNavigationItem(paramInt);
 			}
 		}
 
 
-        @Override
+
         public void onTabSelected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
             final ProgramListActivity activity = pgList.get();
             if (activity != null) {
@@ -489,12 +487,12 @@ public class ProgramListActivity extends ProgrammeAbstract implements LoaderMana
             }
         }
 
-        @Override
+
         public void onTabUnselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
 
         }
 
-        @Override
+
         public void onTabReselected(ActionBar.Tab tab, android.app.FragmentTransaction ft) {
 
         }

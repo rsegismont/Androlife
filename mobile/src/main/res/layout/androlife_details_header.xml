@@ -9,6 +9,13 @@
         style="@style/Androlife_Details_Image"
         android:src="@drawable/toutsuite" />
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/androlife_details_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:drawable/screen_background_dark_transparent"/>
+
+
     <LinearLayout
         style="@style/Androlife_Details_Top_Container"
         android:layout_margin="@dimen/common_margin_vertical" >

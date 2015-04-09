@@ -13,10 +13,5 @@
         android:divider="@android:color/transparent"
         android:listSelector="@android:color/transparent" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/androlife_details_actionbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:theme="@style/Androlife_Details_ActionBar" />
 
 </FrameLayout>
